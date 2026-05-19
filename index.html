@@ -246,6 +246,22 @@
       margin-top: 8px;
     }
 
+    .transit {
+      margin: 8px 0 0;
+      border-left: 3px solid rgba(24, 74, 89, 0.28);
+      padding: 7px 9px;
+      background: #f7faf8;
+      color: #415057;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .transit b {
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 0;
+    }
+
     .chip {
       border: 1px solid #e3d8c8;
       border-radius: 999px;
@@ -357,6 +373,48 @@
       gap: 7px;
       color: var(--muted);
       font-size: 12px;
+    }
+
+    .pass-section {
+      margin: 0 0 14px;
+      border: 1px solid #eadfce;
+      border-radius: var(--radius);
+      background: #fffdf8;
+      overflow: hidden;
+    }
+
+    .pass-section summary {
+      cursor: pointer;
+      padding: 11px 12px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      list-style-position: inside;
+    }
+
+    .pass-grid {
+      display: grid;
+      gap: 8px;
+      padding: 0 12px 12px;
+    }
+
+    .pass-card {
+      border-top: 1px solid #eee7dc;
+      padding-top: 9px;
+    }
+
+    .pass-card b {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .pass-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .swatch {
@@ -1141,6 +1199,183 @@
       }
     ];
 
+    const passGuides = {
+      "巴塞隆納": [
+        { title: "建議票券：T-usual 1 zone", detail: "每人一張，2026 票價 EUR 22.80。可搭市區 metro/bus/tram/FGC/Rodalies 1 區，並包含 L9 Sud 機場地鐵；比零買、T-casual 或 Hola 更適合你前後兩段巴塞隆納。" },
+        { title: "使用提醒", detail: "T-usual 是個人票，不能多人共用；每次進站/上車都感應。若 6/9 往返機場飯店用計程車，仍可保留作市區移動。" }
+      ],
+      "馬德里": [
+        { title: "建議票券：Multi Card + 10 次 MetroBus", detail: "Multi Card 可多人同行共用，10 次票適合你短住、觀光巴士日和托雷多日混合的節奏；不建議 Tourist Travel Pass。" },
+        { title: "使用提醒", detail: "同一張卡可連續感應同行人數；地鐵、EMT 市區公車皆方便。前往機場若搭地鐵另留意機場附加費或改計程車。" }
+      ],
+      "波多": [
+        { title: "建議票券：Andante Tour 3", detail: "每人一張，適合 6/2-6/5 波多停留，不用每段判斷 Zone；可搭 Metro、STCP 公車與部分 Andante 網絡。" },
+        { title: "省錢版", detail: "若想精算，可用 Andante Azul 依 Z2/Z3/Z4 儲值，但波多坡多、臨時改搭車機率高，我會偏向省心。" }
+      ],
+      "里斯本": [
+        { title: "建議票券：Navegante Ocasional + 視日買 24h", detail: "6/5、6/6 市區移動多時買 Carris/Metro 24h；6/7 辛特拉日另用 CP/Train&Bus 或當日交通票；6/8 半日可單程或 zapping。" },
+        { title: "不急買 Lisboa Card", detail: "你的行程不是密集博物館型，Lisboa Card 未必划算。28 號電車、15E、升降電車人多，票券方便但仍要顧包。" }
+      ],
+      "辛特拉＋羅卡角": [
+        { title: "建議票券：辛特拉日票或分段購票", detail: "Rossio-Sintra 搭 CP；Sintra 站到佩納宮用 434，往羅卡角看當日 1253/1624 班次。週日人多，必要時用 Bolt/Uber 保體力。" },
+        { title: "現場策略", detail: "先確認佩納宮入場時段，再決定 434 或叫車上山；羅卡角風大且回程班距不可太樂觀。" }
+      ]
+    };
+
+    const transitByDay = {
+      "bcn-0526": [
+        "抵達段：若有大行李，首選機場計程車到 Moxy Barcelona 約 25-35 分。大眾運輸可搭 Metro L9 Sud：Aeroport T1 → Collblanc，換 L5 到 Sants Estació，再步行約 10 分到飯店。",
+        "從機場或車站到飯店：抵達日建議直接計程車；若從 Sants Estació 出站，走 Carrer de Tarragona / Carrer de Mallorca 約 10 分。",
+        "從 Moxy 到高第大道：Metro L5 Sants Estació → Sant Pau | Dos de Maig，出站後步行約 5-8 分。",
+        "由午餐區步行到聖保羅醫院：沿 Avinguda de Gaudí 步行約 5-10 分，路線明亮好走。",
+        "聖保羅醫院到奎爾公園：首選計程車/Bolt 約 10-15 分省上坡；大眾運輸可搭 Bus V23，Sant Antoni Maria Claret - Cartagena 上車，Trav de Dalt - Verdi 一帶下車後步行上坡。",
+        "奎爾公園回 Moxy：體力不足直接計程車。大眾運輸可下坡走到 Lesseps，搭 Metro L3：Lesseps → Tarragona，再步行回飯店。"
+      ],
+      "bcn-0527": [
+        "Moxy 到西班牙廣場：步行約 15 分；或 Metro L3 Tarragona → Espanya 1 站。",
+        "西班牙廣場到米羅基金會：搭 Bus 150，Pl. Espanya 上車，Fundació Joan Miró / Parc de Montjuïc 一帶下車；也可用手扶梯加短走。",
+        "蒙特惠奇回 Moxy：Bus 150 回 Pl. Espanya，再步行或 L3 Espanya → Tarragona。",
+        "午餐移動：若吃 Bar del Pla/Santa Caterina，從 Moxy 搭 L3 Tarragona → Passeig de Gràcia，換 L4 → Jaume I，再步行；若留西班牙廣場，步行即可。",
+        "午餐區到音樂宮：從 Santa Caterina/波恩步行約 8-12 分；若從西班牙廣場出發，Metro L1 Espanya → Urquinaona。",
+        "音樂宮到下午茶：步行 5-12 分，穿越 Ciutat Vella 主街，避免鑽太窄暗巷。",
+        "下午茶到加泰隆尼亞廣場/哥德區：步行主線約 10-15 分，以 Portal de l'Àngel、Carrer del Bisbe、Plaça Sant Jaume 串接。",
+        "晚餐建議留在加泰隆尼亞廣場/恩典大道周邊；若要回 Moxy，Metro L3 Catalunya → Tarragona。",
+        "加泰隆尼亞廣場到聖家堂夜景：Metro L2 Passeig de Gràcia → Sagrada Família；夜景後搭 L5 Sagrada Família → Sants Estació 回飯店。"
+      ],
+      "bcn-0528": [
+        "Moxy 到聖家堂：Metro L5 Sants Estació → Sagrada Família，出站即到；早上比公車穩。",
+        "聖家堂到午餐：若留聖家堂周邊步行即可；若往波恩區，Metro L2 Sagrada Família → Passeig de Gràcia，換 L4 → Jaume I。",
+        "午餐後回 Moxy：從 Jaume I 搭 L4 → Passeig de Gràcia，換 L3 → Tarragona；或直接計程車約 15-20 分。",
+        "Moxy 到畢卡索美術館：Metro L3 Tarragona → Passeig de Gràcia，換 L4 → Jaume I，步行約 6 分。",
+        "畢卡索到波恩/海上聖母聖殿：步行約 5-10 分，區域白天好逛但注意包包。",
+        "波恩到焦糖山：建議計程車/Bolt 上山。大眾運輸可 Metro L4 Jaume I → Alfons X，再換 Bus 119 或步行上坡；日落後叫車下山。",
+        "焦糖山到 MNAC：此段距離長且轉乘多，若要去建議直接計程車；或取消 MNAC 保體力。"
+      ],
+      "bcn-0529": [
+        "Moxy 到恩典大道：Metro L3 Tarragona → Passeig de Gràcia；也可步行約 25-30 分作早晨散步。",
+        "恩典大道到 Arenas：Metro L3 Passeig de Gràcia → Espanya，或計程車約 10 分。",
+        "Arenas 到午餐候選：La Flauta/Vinitus 可從 Espanya 搭 L3 → Passeig de Gràcia；La Pubilla 建議 L3 Espanya → Fontana 後步行。",
+        "午餐到米拉之家：若在 Vinitus/La Flauta，步行約 10-15 分；若在 La Pubilla，Metro L3 Fontana → Diagonal。",
+        "米拉之家到咖啡/飯店短休：回 Moxy 搭 L3 Diagonal → Tarragona；只休咖啡則留在 Rambla de Catalunya 周邊步行。",
+        "飯店或咖啡到巴特婁之家：Metro L3 Tarragona/Diagonal → Passeig de Gràcia；米拉之家出發則步行約 8 分。",
+        "巴特婁之家到晚餐候選：Vinitus/La Flauta/Paella de Su Pau Claris 皆步行 5-12 分；飯後 L3 Passeig de Gràcia → Tarragona 回 Moxy。"
+      ],
+      "mad-0530": [
+        "跨城市交通不列票券。抵達 Madrid Puerta de Atocha 後先看行李狀態，車站內人多請不要邊走邊看手機。",
+        "Atocha 到 AC Hotel Atocha：步行約 8-12 分，行李多可短程計程車。",
+        "飯店到聖米格爾市場：Metro L1 Atocha → Sol，轉步行約 8 分；或計程車約 12-18 分。",
+        "聖米格爾市場到 Casa Labra/Botín：步行串接，Casa Labra 在 Sol 旁，Botín 靠 Plaza Mayor。",
+        "Casa Labra/Botín 到太陽門與主廣場：步行 5-10 分，這段以步行最方便。",
+        "主廣場到馬德里王宮：步行約 12-15 分，沿 Calle Mayor 走主街。",
+        "王宮到晚餐：若吃 Botín 步行回 Plaza Mayor 約 12 分；若回飯店，Metro L1 Sol → Atocha。",
+        "晚餐到普拉多可選：Metro L1 Sol → Estación del Arte，或從文學區步行；晚間回飯店建議計程車或 L1。"
+      ],
+      "mad-0531": [
+        "AC Hotel Atocha 到 El Rastro：Metro L1 Atocha → Tirso de Molina，再步行約 8 分；也可計程車到 Ribera de Curtidores。",
+        "El Rastro 到主廣場/太陽門：步行約 15 分，走 La Latina 到 Plaza Mayor 主線。",
+        "主廣場到 Casa Revuelta/La Campana：步行 3-8 分。",
+        "午餐到觀光巴士上車點：建議步行到 Plaza de España / Gran Vía 或 Museo del Prado 站點，依當日巴士路線選最近站。",
+        "觀光巴士到普拉多：在 Museo del Prado / Neptuno 周邊下車，步行 5 分。",
+        "普拉多到晚餐：文學區可步行 8-12 分；若回阿托查附近，步行或 Metro L1 Estación del Arte → Atocha。",
+        "晚餐到阿穆德納夜景：若仍在老城可步行主街；若在阿托查附近，Metro L1 Atocha → Sol，再步行/短程計程車。夜晚不要走空巷。"
+      ],
+      "mad-0601": [
+        "AC Hotel Atocha 到 Toledo 火車：步行到 Madrid Puerta de Atocha；跨城市火車票另行使用。",
+        "Toledo 車站到山上全景：首選計程車到 Mirador del Valle 約 10 分；公車可查 L71/L72 現場班次，但班距不如計程車穩。",
+        "全景點到托雷多主教座堂：計程車回老城，或回車站搭 Bus 5/12/61 到 Zocodover 後步行。",
+        "主教座堂到午餐：老城內步行約 5-10 分，坡道與石板路多。",
+        "午餐到聖多美教堂/猶太區：步行約 8-12 分，穿好走鞋。",
+        "老城返回馬德里：從 Zocodover 搭 Bus 5/61 到 Toledo 車站，或計程車下山；再搭火車回 Atocha。",
+        "Atocha 到普拉多免費時段：步行約 12-15 分或 Metro L1 Atocha → Estación del Arte。"
+      ],
+      "opo-0602": [
+        "市區到馬德里機場：若從 Atocha 出發，最省心計程車固定費；地鐵可 L1 Atocha → Tribunal，換 L10 → Nuevos Ministerios，換 L8 → Aeropuerto T1-T2-T3/T4。",
+        "跨城市飛行不列票券；抵達波多後到市區建議 Metro E 線 Aeroporto → Trindade，再轉 D 線到 São Bento 或步行/短程車到飯店。",
+        "到 Mercure Porto Centro：從 São Bento 步行約 5-8 分；行李多可從機場直接叫車。",
+        "飯店到波良市場：步行約 10-12 分，或 Metro D São Bento → Trindade/步行到 Bolhão。",
+        "波良市場到 Conga：步行約 5 分。",
+        "Conga 到阿瑪斯教堂與聖本篤車站：步行 8-12 分，沿 Rua de Santa Catarina / Batalha 下行。",
+        "聖本篤到 Majestic Café：步行約 8 分。",
+        "Majestic Café 到 Restaurante Lameiras：步行約 10 分；晚餐外帶後回飯店走主街或短程車。"
+      ],
+      "opo-0603": [
+        "Mercure 到 Serralves：從 Aliados/Cordoaria 一帶搭 Bus 201 往 Viso/FLUP 方向，Serralves 站下車；省心可 Bolt 約 15-20 分。",
+        "Serralves 到午餐 Epoca/Eatery 119：建議 Bolt/Uber 直達 Cedofeita/市中心，減少轉乘與坡道。",
+        "午餐到卡爾莫教堂：步行約 10-15 分。",
+        "卡爾莫教堂到水晶宮花園：步行約 15 分；天熱可短程車。",
+        "水晶宮到克萊瑞科：步行回程約 15-18 分，坡度溫和。",
+        "克萊瑞科到主教座堂/里貝拉：步行下坡約 15 分，石板路慢走。",
+        "里貝拉到路易一世大橋/蓋亞：步行過橋；回程可搭 Metro D Jardim do Morro → São Bento，或直接 Bolt 回飯店。"
+      ],
+      "opo-0604": [
+        "Mercure 到萊羅書店：步行約 12-15 分，早場路線安全清楚。",
+        "萊羅到早餐候選：Epoca/Eatery 119 建議步行或短程車；若在 Mercure 吃早餐則回飯店步行。",
+        "早餐到卡爾莫/克萊瑞科：步行 8-12 分。",
+        "卡爾莫到 Taberna Santo António：步行約 10-12 分，往 Virtudes 下坡。",
+        "午餐到交易宮：步行下坡約 10-12 分。",
+        "交易宮到里貝拉河岸：步行約 5 分。",
+        "里貝拉到蓋亞酒莊/鐵橋夕陽：步行過 Ponte Luís I 下層或上層；想省腿力搭 Metro D São Bento → Jardim do Morro。",
+        "蓋亞到晚餐：若吃 O Buraco，Metro D Jardim do Morro → Trindade，再步行；若吃 Casa Viúva，建議 Bolt。"
+      ],
+      "lis-0605": [
+        "跨城市火車不列票券。抵達 Lisboa Santa Apolónia/Oriente 後先放行李，車站注意行李。",
+        "車站到 Ibis Lisboa：從 Santa Apolónia 可搭 Metro Blue Line Santa Apolónia → Marquês de Pombal / Parque 一帶，再步行或短程車；行李多直接計程車。",
+        "Ibis 到熱羅尼莫斯修道院：Metro 到 Cais do Sodré 後搭 Tram 15E，Cais do Sodré 上車，Mosteiro Jerónimos 下車；也可計程車約 20-30 分。",
+        "修道院到貝倫蛋塔：步行約 5 分。",
+        "貝倫蛋塔到貝倫塔：步行沿河約 15-18 分，日曬強可搭短程計程車。",
+        "貝倫塔到 Time Out Market：Tram 15E Mosteiro Jerónimos/Belém → Cais do Sodré，或計程車回市區。",
+        "Time Out Market 到河岸散步：步行 3-8 分；回 Ibis 可 Metro Green Line Cais do Sodré → Baixa-Chiado，換 Blue Line 到 Marquês/Parque。"
+      ],
+      "lis-0606": [
+        "Ibis 到 28 號電車起點：Metro Blue/Yellow 轉到 Martim Moniz 一帶，或早晨直接 Bolt；上車點 Martim Moniz，越早越好。",
+        "28 號電車到聖露西亞：搭 Tram 28E，Martim Moniz 上車，Largo das Portas do Sol / Santa Luzia 下車。",
+        "聖露西亞到 Break Sé：步行下坡約 8 分。",
+        "早餐到里斯本主教座堂/聖安東尼：步行約 3-5 分。",
+        "主教座堂到奧古斯塔拱門/商業廣場：步行下坡約 8-10 分。",
+        "商業廣場到 Rossio/孔瑟桑街：步行沿 Rua Augusta 約 12 分；也可搭 Metro Blue Line Baixa-Chiado → Restauradores/Rossio 周邊。",
+        "Rossio 到午餐候選：步行 3-10 分，Bonjardim 靠 Restauradores 最方便。",
+        "午餐回 Ibis：Metro Blue Line Restauradores → Marquês de Pombal/Parque，步行回飯店。",
+        "Ibis 到升降電車支線：Metro Blue Line 到 Restauradores；榮耀電車 Glória 從 Restauradores 上車到 São Pedro de Alcântara。",
+        "升降電車支線到聖若熱城堡：從 Baixa/Chiado 建議短程 Bolt 或搭 Bus 737，Praça da Figueira 上車，Castelo 下車。",
+        "城堡到 Fado 晚餐：步行下坡到 Alfama 主街；Fado 後建議 Bolt/Uber 回飯店。"
+      ],
+      "lis-0607": [
+        "Ibis 到 Rossio 車站：Metro Blue Line Marquês/Parque → Restauradores，步行進 Rossio 車站。",
+        "Rossio 到辛特拉：搭 CP Sintra Line，Rossio → Sintra，約 40 分；跨城市票券依當日票種。",
+        "Sintra 車站到佩納宮：搭 Sintra 434，Sintra Estação 上車，Palácio da Pena 下車；若排隊太長改 Bolt/Tuk Tuk。",
+        "佩納宮到辛特拉老城：434 回 Centro Histórico / Volta do Duche，或下山短程車。",
+        "老城到雷加萊拉莊園：步行約 12-15 分；體力不足改短程車。",
+        "雷加萊拉/老城到羅卡角：搭 Carris Metropolitana 1253 或 1624，Sintra Estação/Portela de Sintra 上車，Cabo da Roca 下車；務必先查回程班次。",
+        "羅卡角回里斯本：可搭 1253/1624 回 Sintra 再 CP 回 Rossio；若銜接順，也可往 Cascais 再搭 CP Cascais Line 回 Cais do Sodré。"
+      ],
+      "lis-bcn-0608": [
+        "Ibis 到巴西人咖啡館：Metro Blue Line 到 Baixa-Chiado，出站步行約 3 分。",
+        "A Brasileira 到希亞多採買：步行 3-8 分，購物袋保持在身側前方。",
+        "希亞多到聖多祿花園：可搭 Glória Funicular，Restauradores 上車到 São Pedro de Alcântara；或步行上坡約 12 分。",
+        "聖多祿花園到自由大道：步行下坡到 Avenida da Liberdade 約 10-15 分。",
+        "自由大道到里斯本機場：Metro Blue Line Marquês de Pombal → São Sebastião，換 Red Line → Aeroporto；行李多建議計程車/Bolt。",
+        "跨城市飛行不列票券；抵達 BCN 後直接回機場飯店，不進市區。",
+        "BCN 到 Barcelona Airport Hotel：首選飯店接駁或計程車；若用大眾運輸需轉乘，晚間不建議拖行李折騰。"
+      ],
+      "bcn-0609": [
+        "機場飯店進市區：首選飯店接駁到機場後搭 Metro L9 Sud Aeroport T1/T2 → Collblanc，換 L5 → Diagonal；購物日也可直接計程車到 Passeig de Gràcia。",
+        "Diagonal/恩典大道到加泰隆尼亞廣場：沿 Passeig de Gràcia 步行下行約 15-20 分；購物多時搭 Metro L3 Diagonal → Catalunya。",
+        "加泰隆尼亞廣場到波蓋利亞市場：步行沿 La Rambla 約 8-10 分，包包放前面。",
+        "波蓋利亞到蘭布拉大道/奎爾宮：步行約 5-8 分。",
+        "奎爾宮到皇家廣場/哥倫布塔：步行 5-12 分，走明亮主街。",
+        "哥倫布塔到舊港/海邊：步行約 10-15 分；購物袋多就不要去沙灘。",
+        "舊港到焦糖山：若真的要去，建議 Metro L4 Barceloneta → Alfons X，再換 Bus 119/短程車上山；日落後叫車下山。",
+        "晚餐後回機場飯店：從 Catalunya/Diagonal 可搭 L3/L5 接 L9 Sud 到 Aeroport T1/T2，再接飯店接駁；晚餐較晚或購物多時直接計程車。"
+      ]
+    };
+
+    days.forEach((day) => {
+      const transits = transitByDay[day.id] || [];
+      day.route.forEach((stop, index) => {
+        if (transits[index]) stop.transit = transits[index];
+      });
+    });
+
     window.itineraryDays = days;
 
     const tabs = document.querySelector(".day-tabs");
@@ -1188,6 +1423,7 @@
         <p class="popup-line">${stop.en}</p>
         ${stop.address ? `<p class="popup-line">地址：${stop.address}</p>` : ""}
         ${stop.time ? `<p class="popup-line">時間：${stop.time}</p>` : ""}
+        ${stop.transit ? `<p class="popup-line"><b>交通：</b>${stop.transit}</p>` : ""}
         <p class="popup-line">${stop.note}</p>
       `;
     }
@@ -1205,9 +1441,38 @@
       });
     }
 
+    function passGuideFor(day) {
+      const city = (day.city || "").split("→")[0];
+      if (city.includes("辛特拉")) return passGuides["辛特拉＋羅卡角"];
+      if (city.includes("巴塞隆納")) return passGuides["巴塞隆納"];
+      if (city.includes("馬德里")) return passGuides["馬德里"];
+      if (city.includes("波多")) return passGuides["波多"];
+      if (city.includes("里斯本")) return passGuides["里斯本"];
+      return null;
+    }
+
+    function renderPassGuide(day) {
+      const guide = passGuideFor(day);
+      if (!guide) return "";
+      return `
+        <details class="pass-section" open>
+          <summary>城市交通票建議</summary>
+          <div class="pass-grid">
+            ${guide.map((item) => `
+              <div class="pass-card">
+                <b>${item.title}</b>
+                <span>${item.detail}</span>
+              </div>
+            `).join("")}
+          </div>
+        </details>
+      `;
+    }
+
     function renderDetails(day, color) {
       details.innerHTML = `
         <h2 class="day-title">${day.city ? day.city + "｜" : ""}${day.label}｜${day.date}<br>${day.title}</h2>
+        ${renderPassGuide(day)}
         <div class="meta-grid">
           <div class="meta"><b>步行負荷</b><span>${day.steps}</span></div>
           <div class="meta"><b>每日預算</b><span>${day.budget}</span></div>
@@ -1226,6 +1491,7 @@
               <div>
                 <h3>${stop.time}　${stop.zh}<span class="en">${stop.en}</span></h3>
                 <p>${stop.note}</p>
+                ${stop.transit ? `<div class="transit"><b>推薦交通</b><br>${stop.transit}</div>` : ""}
                 <div class="chips">
                   <span class="chip">${stop.address}</span>
                   <span class="chip">地圖編號 ${index + 1}</span>
