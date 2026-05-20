@@ -360,6 +360,20 @@
       box-shadow: 0 2px 7px rgba(0, 0, 0, 0.24);
     }
 
+    .suggested-marker {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: var(--plum);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 850;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.24);
+    }
+
     .legend {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1376,6 +1390,49 @@
       });
     });
 
+    const suggestedByDay = {
+      "bcn-0527": [
+        { zh: "蒙特惠奇城堡", en: "Castell de Montjuïc", address: "Carretera de Montjuïc 66", lat: 41.3633, lng: 2.1661, note: "補充推薦：若早上天氣晴、體力好，可在米羅基金會後搭 150 公車上去；重點是港口與城市 360 度視野，不必勉強入內久逛。" }
+      ],
+      "bcn-0528": [
+        { zh: "維森斯之家", en: "Casa Vicens", address: "Carrer de les Carolines 20-26", lat: 41.4036, lng: 2.1506, note: "補充推薦：高第早期住宅與 UNESCO 高第作品之一，最適合接在奎爾公園/格拉西亞動線；可取代焦糖山支線。" }
+      ],
+      "bcn-0609": [
+        { zh: "桂爾宮", en: "Palau Güell", address: "Carrer Nou de la Rambla 3-5", lat: 41.3789, lng: 2.1740, note: "補充推薦：你原本會經過奎爾宮一帶；若想補一個高第早期室內代表作，可用它取代蘭布拉大道久逛。" }
+      ],
+      "mad-0531": [
+        { zh: "索菲亞王后藝術中心", en: "Museo Reina Sofía", address: "Calle de Santa Isabel 52", lat: 40.4081, lng: -3.6940, note: "補充推薦：若普拉多免費時段太擠或你想看《格爾尼卡》，可把它升級為正式備案；離阿托查很近。" },
+        { zh: "麗池公園與水晶宮", en: "El Retiro / Palacio de Cristal", address: "Parque de El Retiro", lat: 40.4136, lng: -3.6821, note: "補充推薦：如果不想再進美術館，下午改到麗池公園調節體力；水晶宮需以當日開放狀態為準。" },
+        { zh: "德波神殿", en: "Templo de Debod", address: "Calle de Ferraz 1", lat: 40.4240, lng: -3.7178, note: "補充推薦：王宮區附近的夕陽點；若晚餐前還有精神，可從王宮/西班牙廣場方向順路看，不建議深夜停留。" }
+      ],
+      "mad-0601": [
+        { zh: "提森-博內米薩美術館", en: "Museo Thyssen-Bornemisza", address: "Paseo del Prado 8", lat: 40.4160, lng: -3.6948, note: "補充推薦：若你對美術館很有興趣，它能補普拉多與索菲亞王后之間的藝術脈絡；不建議和托雷多日硬塞，可當回馬德里後的彈性選項。" }
+      ],
+      "opo-0603": [
+        { zh: "音樂之家", en: "Casa da Música", address: "Avenida da Boavista 604-610", lat: 41.1591, lng: -8.6306, note: "補充推薦：波多當代建築代表，適合接 Serralves 後或前往福茲前；若當天老城走太多，可用它替換部分老城支線。" },
+        { zh: "福茲海邊", en: "Foz do Douro", address: "Passeio Alegre", lat: 41.1484, lng: -8.6710, note: "補充推薦：比里貝拉更放鬆的海邊散步點，適合 Serralves 後傍晚去；風大，天黑後搭車回市中心。" }
+      ],
+      "opo-0604": [
+        { zh: "塞拉杜皮拉爾修道院觀景點", en: "Mosteiro da Serra do Pilar", address: "Largo Aviz, Vila Nova de Gaia", lat: 41.1383, lng: -8.6069, note: "補充推薦：和莫羅花園相近但視角更完整；6/4 看夕陽時可與 Jardim do Morro 擇一，不需要兩個都跑。" },
+        { zh: "WOW 波多葡萄酒文化區", en: "WOW Porto", address: "Rua do Choupelo 39, Vila Nova de Gaia", lat: 41.1348, lng: -8.6131, note: "補充推薦：蓋亞酒窖區旁的葡萄酒/文化複合區；若下雨或想找舒服洗手間、咖啡與室內備案，可短暫使用。" }
+      ],
+      "lis-0605": [
+        { zh: "阿茹達宮", en: "Palácio Nacional da Ajuda", address: "Largo da Ajuda", lat: 38.7075, lng: -9.1986, note: "補充推薦：貝倫附近的王室宮殿，室內完整、觀光壓力較低；若修道院隊伍太長或日曬太強，可改來這裡。" },
+        { zh: "MAAT 建築與電力博物館河岸", en: "MAAT / Central Tejo riverside", address: "Avenida Brasília", lat: 38.6957, lng: -9.1947, note: "補充推薦：最值得的是河岸建築外觀與散步動線；可替代貝倫塔入內排隊。" }
+      ],
+      "lis-0606": [
+        { zh: "國家磁磚博物館", en: "Museu Nacional do Azulejo", address: "Rua Madre de Deus 4", lat: 38.7247, lng: -9.1138, note: "補充推薦：非常葡萄牙、辨識度高，也比熱門景點安靜；可取代下午升降電車支線或作雨天避暑點。" }
+      ],
+      "lis-bcn-0608": [
+        { zh: "古爾本基安花園／現代藝術中心", en: "Gulbenkian Garden / CAM", address: "Avenida de Berna 45A", lat: 38.7372, lng: -9.1545, note: "補充推薦：主館整修到 2026 年 7 月，不建議當正式博物館；但花園與 CAM 可作半日休息或雨天備案。" },
+        { zh: "LX Factory", en: "LX Factory", address: "Rua Rodrigues de Faria 103", lat: 38.7031, lng: -9.1783, note: "補充推薦：創意園區、書店、咖啡與街頭藝術；若 6/8 不想逛希亞多，可改成較現代的里斯本半日支線。" }
+      ]
+    };
+
+    days.forEach((day) => {
+      if (suggestedByDay[day.id]) day.suggested = suggestedByDay[day.id];
+    });
+
     window.itineraryDays = days;
 
     const tabs = document.querySelector(".day-tabs");
@@ -1399,7 +1456,8 @@
         const points = day.route.map((stop) => [stop.lat, stop.lng]);
         const altPoints = day.alternatives.map((stop) => [stop.lat, stop.lng]);
         const extraPoints = (day.extras || []).map((stop) => [stop.lat, stop.lng]);
-        const bounds = L.latLngBounds(points.concat(altPoints, extraPoints));
+        const suggestedPoints = (day.suggested || []).map((stop) => [stop.lat, stop.lng]);
+        const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints));
         map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
       }, delay);
     }
@@ -1483,6 +1541,7 @@
           <div class="legend-item"><span class="swatch" style="background:${color}"></span>當日主要停留點</div>
           <div class="legend-item"><span class="swatch" style="background:#6d7276"></span>餐廳/雨天備案</div>
           ${day.extras ? `<div class="legend-item"><span class="swatch" style="background:#a77a3b"></span>順路餐廳/伴手禮</div>` : ""}
+          ${day.suggested ? `<div class="legend-item"><span class="swatch" style="background:#6f5878"></span>值得補充景點</div>` : ""}
         </div>
         <ol class="timeline">
           ${day.route.map((stop, index) => `
@@ -1503,6 +1562,11 @@
         ${day.extras ? `
           <div class="meta-grid">
             <div class="meta"><b>順路加標</b><span>${day.extras.map((stop) => `${stop.zh}：${stop.note}`).join("　／　")}</span></div>
+          </div>
+        ` : ""}
+        ${day.suggested ? `
+          <div class="meta-grid">
+            <div class="meta"><b>值得補充景點</b><span>${day.suggested.map((stop) => `${stop.zh}：${stop.note}`).join("　／　")}</span></div>
           </div>
         ` : ""}
       `;
@@ -1581,9 +1645,25 @@
           .addTo(routeLayer);
       });
 
+      (day.suggested || []).forEach((stop) => {
+        L.marker([stop.lat, stop.lng], {
+          icon: L.divIcon({
+            className: "",
+            html: `<div class="suggested-marker">推</div>`,
+            iconSize: [26, 26],
+            iconAnchor: [13, 13],
+            popupAnchor: [0, -13]
+          }),
+          zIndexOffset: 450
+        })
+          .bindPopup(popupHtml(stop, "補充："))
+          .addTo(routeLayer);
+      });
+
       const altPoints = day.alternatives.map((stop) => [stop.lat, stop.lng]);
       const extraPoints = (day.extras || []).map((stop) => [stop.lat, stop.lng]);
-      const bounds = L.latLngBounds(points.concat(altPoints, extraPoints));
+      const suggestedPoints = (day.suggested || []).map((stop) => [stop.lat, stop.lng]);
+      const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints));
       map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
       refreshMapSize(120);
     }
