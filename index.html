@@ -374,11 +374,56 @@
       box-shadow: 0 2px 7px rgba(0, 0, 0, 0.24);
     }
 
+    .wc-marker {
+      width: 28px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border: 2px solid #fff;
+      border-radius: 6px;
+      background: #2f6583;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.24);
+    }
+
     .legend {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 6px;
       margin-top: 10px;
+    }
+
+    .tool-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .toggle-btn {
+      border: 1px solid #cbd9df;
+      border-radius: var(--radius);
+      background: #f6fbfd;
+      color: var(--accent);
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .toggle-btn[aria-pressed="true"] {
+      border-color: #2f6583;
+      background: #e8f3f7;
+      box-shadow: inset 0 0 0 1px #2f6583;
+    }
+
+    .toggle-btn:focus-visible {
+      outline: 3px solid rgba(47, 101, 131, 0.25);
+      outline-offset: 2px;
     }
 
     .legend-item {
@@ -1433,6 +1478,173 @@
       if (suggestedByDay[day.id]) day.suggested = suggestedByDay[day.id];
     });
 
+    const wcPrototypeByDay = {
+      "bcn-0526": [
+        { zh: "Moxy Barcelona 大廳", en: "Moxy Barcelona lobby", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3798, lng: 2.1456, note: "抵達、出門前、回飯店休息時使用；也是全天最穩的補給點。" },
+        { zh: "聖保羅醫院館內", en: "Recinte Modernista de Sant Pau", type: "購票景點", access: "需門票/入場", reliability: "高", lat: 41.4135, lng: 2.1745, note: "進館後使用最乾淨穩定；離開前先去，後面奎爾公園上坡較不方便。" },
+        { zh: "奎爾公園園區", en: "Park Güell public facilities", type: "景點/園區", access: "入園後依現場指示", reliability: "中高", lat: 41.4145, lng: 2.1527, note: "人潮多可能排隊；建議入園後先確認最近位置，不要等到下山前才找。" }
+      ],
+      "mad-0531": [
+        { zh: "馬約爾廣場周邊餐廳/市場", en: "Plaza Mayor / Mercado area", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 40.4155, lng: -3.7074, note: "老城區真正乾淨公廁不一定好找；午餐或咖啡時順手使用最穩。" },
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "購票/免費時段景點", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "若進普拉多，這是當天下午最可靠的洗手間；離開前先去。" },
+        { zh: "阿托查車站", en: "Madrid Puerta de Atocha", type: "大型車站", access: "站內設施，可能需付費/排隊", reliability: "中高", lat: 40.4066, lng: -3.6892, note: "回飯店或移動前可用；車站人多，同行者看包。" }
+      ],
+      "opo-0604": [
+        { zh: "Mercure Porto Centro", en: "Mercure Porto Centro", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.1449, lng: -8.6079, note: "老城坡多，出門前先用；下午回飯店休息時也可重整。" },
+        { zh: "交易宮館內", en: "Palácio da Bolsa", type: "購票/導覽景點", access: "入館後使用", reliability: "高", lat: 41.1419, lng: -8.6155, note: "6/4 午後最穩的室內點；若排導覽，進場前後先確認。" },
+        { zh: "WOW / 蓋亞文化區", en: "WOW Porto / Gaia", type: "商業文化區", access: "公共區域/消費區較穩", reliability: "中高", lat: 41.1348, lng: -8.6131, note: "蓋亞夕陽前後很實用，適合找洗手間、咖啡和短休。" }
+      ],
+      "lis-0605": [
+        { zh: "Ibis Lisboa 飯店", en: "Ibis Lisboa", type: "飯店", access: "住客最可靠", reliability: "高", lat: 38.7274, lng: -9.1468, note: "火車抵達放行李後先用；去貝倫前把水和防曬一起整理好。" },
+        { zh: "熱羅尼莫斯修道院館內", en: "Jeronimos Monastery", type: "購票景點", access: "入館/教堂區依現場開放", reliability: "中高", lat: 38.6979, lng: -9.2065, note: "隊伍長時不一定適合臨時找；進去後先確認位置。" },
+        { zh: "Time Out Market", en: "Time Out Market Lisboa", type: "市場/餐飲空間", access: "公共餐飲空間，尖峰可能排隊", reliability: "高", lat: 38.7068, lng: -9.1457, note: "晚餐前後最可靠；人多但比老城小店更穩。" }
+      ],
+      "lis-0606": [
+        { zh: "Armazéns do Chiado", en: "Armazéns do Chiado", type: "商場", access: "商場開放時間內", reliability: "高", lat: 38.7108, lng: -9.1398, note: "下城/希亞多一帶很實用，適合中午或下午躲日曬時使用。" },
+        { zh: "Rossio 車站周邊", en: "Rossio Station area", type: "車站/商業區", access: "依站內/周邊店家開放", reliability: "中", lat: 38.7140, lng: -9.1407, note: "適合作為轉乘前備案；如果要乾淨穩定，商場或咖啡館通常更好。" },
+        { zh: "Clube de Fado / 晚餐店", en: "Fado dinner venue", type: "餐廳", access: "用餐時使用", reliability: "高", lat: 38.7104, lng: -9.1315, note: "Fado 後老城巷弄不適合再臨時找，離開餐廳前先去。" }
+      ]
+    };
+
+    days.forEach((day) => {
+      if (wcPrototypeByDay[day.id]) day.wc = wcPrototypeByDay[day.id];
+    });
+
+    const wcByDay = {
+      "bcn-0526": [
+        { zh: "Moxy Barcelona 大廳", en: "Moxy Barcelona lobby", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3798, lng: 2.1456, note: "抵達、出門前、回飯店休息時使用；也是全天最穩的補給點。" },
+        { zh: "Barcelona Sants 車站", en: "Barcelona Sants station", type: "大型車站", access: "站內設施，可能需付費/排隊", reliability: "中高", lat: 41.3791, lng: 2.1400, note: "若搭火車/地鐵轉乘或抵達太早，車站是 Moxy 周邊最穩的備案。" },
+        { zh: "聖家堂館內", en: "Sagrada Família facilities", type: "購票景點", access: "入場後使用", reliability: "高", lat: 41.4036, lng: 2.1744, note: "如果午餐改到聖家堂周邊，入場前後都先確認；景點外公廁不一定好找。" },
+        { zh: "聖保羅醫院館內", en: "Recinte Modernista de Sant Pau", type: "購票景點", access: "需門票/入場", reliability: "高", lat: 41.4135, lng: 2.1745, note: "進館後使用最乾淨穩定；離開前先去，後面奎爾公園上坡較不方便。" },
+        { zh: "奎爾公園園區", en: "Park Güell public facilities", type: "景點/園區", access: "入園後依現場指示", reliability: "中高", lat: 41.4145, lng: 2.1527, note: "人潮多可能排隊；建議入園後先確認最近位置，不要等到下山前才找。" },
+        { zh: "Lesseps 周邊咖啡館", en: "Lesseps cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 41.4066, lng: 2.1495, note: "奎爾公園下山後的備案；比在上坡住宅區臨時找更實際。" }
+      ],
+      "bcn-0527": [
+        { zh: "Moxy Barcelona 大廳", en: "Moxy Barcelona lobby", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3798, lng: 2.1456, note: "早上出門和中午回飯店休息時先用，這天移動區域多。" },
+        { zh: "Arenas de Barcelona 商場", en: "Arenas de Barcelona", type: "商場", access: "商場開放時間內", reliability: "高", lat: 41.3762, lng: 2.1496, note: "西班牙廣場最可靠，適合蒙特惠奇前後使用。" },
+        { zh: "米羅基金會館內", en: "Fundació Joan Miró", type: "購票/展館", access: "入館後使用", reliability: "高", lat: 41.3680, lng: 2.1600, note: "若進館參觀，離開前先去；山上其他點不一定穩。" },
+        { zh: "加泰隆尼亞音樂宮館內", en: "Palau de la Música Catalana", type: "購票/導覽景點", access: "導覽/入場後使用", reliability: "高", lat: 41.3875, lng: 2.1753, note: "音樂宮導覽前後最穩；哥德區內不要等到急了才找。" },
+        { zh: "聖卡特琳娜市場", en: "Mercat de Santa Caterina", type: "市場", access: "市場開放時間內", reliability: "中高", lat: 41.3866, lng: 2.1782, note: "音樂宮/波恩區附近很實用；市場尖峰可能排隊。" },
+        { zh: "El Corte Inglés 加泰隆尼亞廣場", en: "El Corte Inglés Plaça Catalunya", type: "百貨", access: "百貨開放時間內", reliability: "高", lat: 41.3870, lng: 2.1701, note: "哥德區前後最可靠，也適合購物、補水和避暑。" },
+        { zh: "聖家堂館內/周邊", en: "Sagrada Família", type: "景點/餐飲區", access: "館內需門票；周邊需消費", reliability: "中高", lat: 41.4036, lng: 2.1744, note: "夜景支線前可在晚餐或地鐵站周邊處理；夜晚不要鑽小巷找。" }
+      ],
+      "bcn-0528": [
+        { zh: "Moxy Barcelona 大廳", en: "Moxy Barcelona lobby", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3798, lng: 2.1456, note: "聖家堂前後若回飯店休息，先用再出門。" },
+        { zh: "聖家堂館內", en: "Sagrada Família facilities", type: "購票景點", access: "入場後使用", reliability: "高", lat: 41.4036, lng: 2.1744, note: "上午重點景點，入場後和離場前都適合確認。" },
+        { zh: "Jaume I / 波恩咖啡館", en: "Jaume I / Born cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 41.3849, lng: 2.1800, note: "波恩區巷弄多，小店規則不一；點咖啡使用最順。" },
+        { zh: "畢卡索美術館館內", en: "Museu Picasso", type: "購票景點", access: "入館後使用", reliability: "高", lat: 41.3852, lng: 2.1809, note: "下午波恩區最可靠的正式洗手間。" },
+        { zh: "聖卡特琳娜市場", en: "Mercat de Santa Caterina", type: "市場", access: "市場開放時間內", reliability: "中高", lat: 41.3866, lng: 2.1782, note: "波恩/哥德區備案，適合吃點東西時順路。" },
+        { zh: "MNAC 館內", en: "MNAC", type: "博物館/展館", access: "入館或公共區依現場", reliability: "高", lat: 41.3688, lng: 2.1536, note: "若傍晚改去 MNAC/魔幻噴泉區，這是山上最穩的點。" }
+      ],
+      "bcn-0529": [
+        { zh: "Moxy Barcelona 大廳", en: "Moxy Barcelona lobby", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3798, lng: 2.1456, note: "購物/建築日會反覆經過市中心，飯店休息時先用。" },
+        { zh: "Arenas de Barcelona 商場", en: "Arenas de Barcelona", type: "商場", access: "商場開放時間內", reliability: "高", lat: 41.3762, lng: 2.1496, note: "西班牙廣場與舊鬥牛場支線最穩。" },
+        { zh: "El Corte Inglés 加泰隆尼亞廣場", en: "El Corte Inglés Plaça Catalunya", type: "百貨", access: "百貨開放時間內", reliability: "高", lat: 41.3870, lng: 2.1701, note: "恩典大道南段/加泰隆尼亞廣場附近首選。" },
+        { zh: "米拉之家館內", en: "Casa Milà / La Pedrera", type: "購票景點", access: "入館後使用", reliability: "高", lat: 41.3954, lng: 2.1619, note: "若入內參觀，離開前先去；周邊精品店未必方便借用。" },
+        { zh: "巴特婁之家館內", en: "Casa Batlló", type: "購票景點", access: "入館後使用", reliability: "高", lat: 41.3917, lng: 2.1649, note: "傍晚參觀或購物中段最穩的洗手間。" },
+        { zh: "Rambla Catalunya 餐飲區", en: "Rambla de Catalunya cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 41.3910, lng: 2.1630, note: "La Flauta/Vinitus 一帶用餐時處理，晚餐後再搭車回飯店。" }
+      ],
+      "mad-0530": [
+        { zh: "Madrid Puerta de Atocha", en: "Atocha station", type: "大型車站", access: "站內設施，可能需付費/排隊", reliability: "中高", lat: 40.4066, lng: -3.6892, note: "抵達馬德里第一個可靠點；車站人多，同行者看包。" },
+        { zh: "AC Hotel Atocha", en: "AC Hotel Atocha", type: "飯店", access: "住客最可靠", reliability: "高", lat: 40.4058, lng: -3.6900, note: "放行李後先用，再進老城。" },
+        { zh: "聖米格爾市場", en: "Mercado de San Miguel", type: "市場/餐飲空間", access: "市場開放時間內", reliability: "中高", lat: 40.4154, lng: -3.7089, note: "午餐區最實用，但尖峰人多可能排隊。" },
+        { zh: "主廣場周邊餐廳", en: "Plaza Mayor restaurants", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 40.4155, lng: -3.7074, note: "老城步行段不一定有好公廁，用餐/咖啡時順手。" },
+        { zh: "馬德里王宮館內", en: "Royal Palace of Madrid", type: "購票景點", access: "入場後使用", reliability: "高", lat: 40.4179, lng: -3.7143, note: "若進王宮，這是王宮區最可靠的點；離開前先去。" },
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "購票/免費時段景點", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "若晚上加普拉多免費時段，進館後最可靠。" }
+      ],
+      "mad-0531": [
+        { zh: "AC Hotel Atocha", en: "AC Hotel Atocha", type: "飯店", access: "住客最可靠", reliability: "高", lat: 40.4058, lng: -3.6900, note: "出門前先用，週日市集人多。" },
+        { zh: "El Rastro 周邊酒吧/咖啡館", en: "El Rastro cafés and bars", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 40.4105, lng: -3.7075, note: "跳蚤市場正式公廁不好預期；買咖啡或小點使用最實際。" },
+        { zh: "馬約爾廣場周邊餐廳/市場", en: "Plaza Mayor / Mercado area", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 40.4155, lng: -3.7074, note: "老城區真正乾淨公廁不一定好找；午餐或咖啡時順手使用最穩。" },
+        { zh: "觀光巴士 Prado / Neptuno 站周邊", en: "Prado / Neptuno bus stop area", type: "博物館區", access: "進館/咖啡館使用", reliability: "中高", lat: 40.4152, lng: -3.6929, note: "觀光巴士下車後若要停留，優先用博物館或附近咖啡館。" },
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "購票/免費時段景點", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "若進普拉多，這是當天下午最可靠的洗手間；離開前先去。" },
+        { zh: "索菲亞王后藝術中心館內", en: "Museo Reina Sofía", type: "博物館", access: "入館後使用", reliability: "高", lat: 40.4081, lng: -3.6940, note: "若改走雨天備案，離阿托查近且洗手間可靠。" },
+        { zh: "阿托查車站", en: "Madrid Puerta de Atocha", type: "大型車站", access: "站內設施，可能需付費/排隊", reliability: "中高", lat: 40.4066, lng: -3.6892, note: "回飯店或移動前可用；車站人多，同行者看包。" }
+      ],
+      "mad-0601": [
+        { zh: "AC Hotel Atocha", en: "AC Hotel Atocha", type: "飯店", access: "住客最可靠", reliability: "高", lat: 40.4058, lng: -3.6900, note: "托雷多日早出發，出門前先用。" },
+        { zh: "Madrid Puerta de Atocha", en: "Atocha station", type: "大型車站", access: "站內設施，可能需付費/排隊", reliability: "中高", lat: 40.4066, lng: -3.6892, note: "搭車前後使用，尤其回程再接普拉多時很實用。" },
+        { zh: "Toledo 車站", en: "Toledo railway station", type: "車站", access: "站內設施", reliability: "中高", lat: 39.8628, lng: -4.0116, note: "抵達托雷多先用；上山與老城石板路後臨時找不方便。" },
+        { zh: "托雷多遊客區/索科多佛廣場", en: "Zocodover visitor area", type: "遊客區/咖啡館", access: "公共設施或需消費", reliability: "中", lat: 39.8587, lng: -4.0228, note: "老城核心備案；若找不到明確公廁，就用咖啡館。" },
+        { zh: "托雷多主教座堂館內", en: "Toledo Cathedral", type: "購票景點", access: "入館後使用", reliability: "中高", lat: 39.8570, lng: -4.0236, note: "參觀前後先確認；主教座堂周邊人潮多。" },
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "博物館", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "回馬德里若加普拉多免費時段，離開前先去。" }
+      ],
+      "opo-0602": [
+        { zh: "馬德里機場", en: "Madrid Barajas Airport", type: "機場", access: "航廈內設施", reliability: "高", lat: 40.4918, lng: -3.5695, note: "飛波多前最可靠；過安檢前後都先處理。" },
+        { zh: "波多機場", en: "Porto Airport", type: "機場", access: "航廈內設施", reliability: "高", lat: 41.2481, lng: -8.6814, note: "抵達波多後先用，再搭 Metro E 線進市區。" },
+        { zh: "Mercure Porto Centro", en: "Mercure Porto Centro", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.1449, lng: -8.6079, note: "放行李時使用，避免拖著行李在老城找。" },
+        { zh: "波良市場", en: "Mercado do Bolhão", type: "市場", access: "市場開放時間內", reliability: "高", lat: 41.1495, lng: -8.6079, note: "午餐和輕食段最可靠，乾淨度通常比街邊小店穩。" },
+        { zh: "聖本篤車站", en: "São Bento Station", type: "車站", access: "站內/周邊設施", reliability: "中", lat: 41.1457, lng: -8.6109, note: "拍磁磚大廳時可作備案，但人多且設施狀況看現場。" },
+        { zh: "Majestic Café / Santa Catarina 餐飲區", en: "Majestic Café / Rua Santa Catarina", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中高", lat: 41.1472, lng: -8.6066, note: "下午茶或逛街時順手使用；比老城坡道臨時找好。" }
+      ],
+      "opo-0603": [
+        { zh: "Mercure Porto Centro", en: "Mercure Porto Centro", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.1449, lng: -8.6079, note: "出門前先用，這天移動距離較長。" },
+        { zh: "Serralves 美術館館內", en: "Serralves Museum", type: "購票/展館", access: "入館後使用", reliability: "高", lat: 41.1597, lng: -8.6598, note: "上午最可靠的洗手間，也適合咖啡短休。" },
+        { zh: "音樂之家館內", en: "Casa da Música", type: "展演/文化設施", access: "館內公共區依現場", reliability: "中高", lat: 41.1591, lng: -8.6306, note: "若接現代建築支線，這是 Boavista 一帶最好的備案。" },
+        { zh: "水晶宮花園設施", en: "Jardins do Palácio de Cristal", type: "公園", access: "公園開放時間內", reliability: "中", lat: 41.1483, lng: -8.6252, note: "公園設施可能狀況普通；可先在附近咖啡館使用。" },
+        { zh: "主教座堂/遊客區", en: "Sé do Porto visitor area", type: "景點/遊客區", access: "依景點或咖啡館", reliability: "中", lat: 41.1429, lng: -8.6110, note: "下坡到里貝拉前先確認，河岸小店常需消費。" },
+        { zh: "蓋亞酒窖/河岸餐飲區", en: "Gaia cellars / Cais de Gaia", type: "酒窖/餐飲區", access: "導覽或消費時使用", reliability: "中高", lat: 41.1368, lng: -8.6150, note: "過橋後最實用；晚間回程前先用。" }
+      ],
+      "opo-0604": [
+        { zh: "Mercure Porto Centro", en: "Mercure Porto Centro", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.1449, lng: -8.6079, note: "老城坡多，出門前先用；下午回飯店休息時也可重整。" },
+        { zh: "萊羅書店周邊咖啡館", en: "Livraria Lello area cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 41.1469, lng: -8.6148, note: "書店排隊前後不一定方便；附近咖啡館是較實際備案。" },
+        { zh: "克萊瑞科塔/周邊館內", en: "Clérigos Tower area", type: "購票景點/咖啡區", access: "入場或消費", reliability: "中", lat: 41.1457, lng: -8.6146, note: "若爬塔或附近休息，可順手處理。" },
+        { zh: "Virtudes 周邊餐廳", en: "Virtudes restaurants", type: "餐飲區", access: "用餐時使用", reliability: "中高", lat: 41.1437, lng: -8.6186, note: "Taberna Santo António 午餐時最順；老城坡道中段不要臨時找。" },
+        { zh: "交易宮館內", en: "Palácio da Bolsa", type: "購票/導覽景點", access: "入館後使用", reliability: "高", lat: 41.1419, lng: -8.6155, note: "6/4 午後最穩的室內點；若排導覽，進場前後先確認。" },
+        { zh: "里貝拉餐飲區", en: "Ribeira restaurants", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 41.1406, lng: -8.6129, note: "河岸人多且觀光餐廳多；點飲料/咖啡使用比較自然。" },
+        { zh: "WOW / 蓋亞文化區", en: "WOW Porto / Gaia", type: "商業文化區", access: "公共區域/消費區較穩", reliability: "中高", lat: 41.1348, lng: -8.6131, note: "蓋亞夕陽前後很實用，適合找洗手間、咖啡和短休。" }
+      ],
+      "lis-0605": [
+        { zh: "Ibis Lisboa 飯店", en: "Ibis Lisboa", type: "飯店", access: "住客最可靠", reliability: "高", lat: 38.7274, lng: -9.1468, note: "火車抵達放行李後先用；去貝倫前把水和防曬一起整理好。" },
+        { zh: "Santa Apolónia 車站", en: "Lisboa Santa Apolónia", type: "大型車站", access: "站內設施", reliability: "中高", lat: 38.7140, lng: -9.1227, note: "火車抵達後的第一個備案；車站人多，同行者看包。" },
+        { zh: "熱羅尼莫斯修道院館內", en: "Jeronimos Monastery", type: "購票景點", access: "入館/教堂區依現場開放", reliability: "中高", lat: 38.6979, lng: -9.2065, note: "隊伍長時不一定適合臨時找；進去後先確認位置。" },
+        { zh: "貝倫蛋塔老店", en: "Pastéis de Belém", type: "餐飲名店", access: "內用/消費時使用", reliability: "中高", lat: 38.6975, lng: -9.2032, note: "若內用，這是貝倫中段最自然的 WC；外帶隊伍時不一定適合。" },
+        { zh: "MAAT / Central Tejo", en: "MAAT / Central Tejo", type: "博物館/河岸展館", access: "入館或公共區依現場", reliability: "中高", lat: 38.6957, lng: -9.1947, note: "貝倫河岸備案，適合取代貝倫塔排隊時使用。" },
+        { zh: "貝倫塔周邊餐飲/遊客設施", en: "Belém Tower area", type: "景點周邊", access: "依現場或需消費", reliability: "中", lat: 38.6916, lng: -9.2160, note: "塔周邊不要等到很急才找；建議在蛋塔店或 MAAT 先處理。" },
+        { zh: "Time Out Market", en: "Time Out Market Lisboa", type: "市場/餐飲空間", access: "公共餐飲空間，尖峰可能排隊", reliability: "高", lat: 38.7068, lng: -9.1457, note: "晚餐前後最可靠；人多但比老城小店更穩。" }
+      ],
+      "lis-0606": [
+        { zh: "Ibis Lisboa 飯店", en: "Ibis Lisboa", type: "飯店", access: "住客最可靠", reliability: "高", lat: 38.7274, lng: -9.1468, note: "早出門搭 28 號電車前先用；下午回飯店休息時重整。" },
+        { zh: "Martim Moniz 周邊咖啡館", en: "Martim Moniz cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 38.7167, lng: -9.1364, note: "28 號電車排隊前可先找咖啡館；廣場本身不一定有穩定公廁。" },
+        { zh: "主教座堂/聖安東尼周邊咖啡館", en: "Sé / Santo António cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中", lat: 38.7101, lng: -9.1333, note: "阿爾法瑪坡道前後的實際備案；點咖啡比問借用更穩。" },
+        { zh: "商業廣場遊客區", en: "Praça do Comércio visitor area", type: "遊客區/餐飲區", access: "依現場或需消費", reliability: "中", lat: 38.7076, lng: -9.1366, note: "廣場開闊但公廁不一定好找；附近餐飲空間較可靠。" },
+        { zh: "Armazéns do Chiado", en: "Armazéns do Chiado", type: "商場", access: "商場開放時間內", reliability: "高", lat: 38.7108, lng: -9.1398, note: "下城/希亞多一帶很實用，適合中午或下午躲日曬時使用。" },
+        { zh: "Rossio 車站周邊", en: "Rossio Station area", type: "車站/商業區", access: "依站內/周邊店家開放", reliability: "中", lat: 38.7140, lng: -9.1407, note: "適合作為轉乘前備案；如果要乾淨穩定，商場或咖啡館通常更好。" },
+        { zh: "聖若熱城堡館內/遊客設施", en: "Castelo de São Jorge facilities", type: "購票景點", access: "入場後使用", reliability: "中高", lat: 38.7139, lng: -9.1335, note: "城堡夕陽前後先用，晚餐後不要在老城巷弄臨時找。" },
+        { zh: "Clube de Fado / 晚餐店", en: "Fado dinner venue", type: "餐廳", access: "用餐時使用", reliability: "高", lat: 38.7104, lng: -9.1315, note: "Fado 後老城巷弄不適合再臨時找，離開餐廳前先去。" }
+      ],
+      "lis-0607": [
+        { zh: "Ibis Lisboa 飯店", en: "Ibis Lisboa", type: "飯店", access: "住客最可靠", reliability: "高", lat: 38.7274, lng: -9.1468, note: "辛特拉日早出門，先用再去 Rossio。" },
+        { zh: "Rossio 車站", en: "Rossio Station", type: "車站", access: "站內/周邊設施", reliability: "中", lat: 38.7140, lng: -9.1407, note: "上火車前備案；尖峰可能排隊。" },
+        { zh: "辛特拉車站", en: "Sintra Station", type: "車站", access: "站內/周邊設施", reliability: "中高", lat: 38.7992, lng: -9.3860, note: "到站後先用再上山，434 排隊時比較安心。" },
+        { zh: "佩納宮館內", en: "Pena Palace", type: "購票景點", access: "入場後使用", reliability: "高", lat: 38.7876, lng: -9.3906, note: "山上最可靠，進場後先確認位置；人多時可能排隊。" },
+        { zh: "辛特拉老城餐廳/咖啡館", en: "Sintra old town cafés", type: "餐飲區", access: "通常需消費", reliability: "中高", lat: 38.7960, lng: -9.3900, note: "午餐時順手使用；老城遊客多但餐飲選擇密集。" },
+        { zh: "雷加萊拉莊園館內", en: "Quinta da Regaleira", type: "購票景點", access: "入場後使用", reliability: "中高", lat: 38.7967, lng: -9.3969, note: "若下午入園，離開前先用，之後往羅卡角路上不穩。" },
+        { zh: "羅卡角遊客設施", en: "Cabo da Roca visitor facilities", type: "遊客設施", access: "依現場開放", reliability: "中", lat: 38.7804, lng: -9.4989, note: "風大、人多、設施有限；最好在辛特拉老城或車站先處理。" }
+      ],
+      "lis-bcn-0608": [
+        { zh: "Ibis Lisboa 飯店", en: "Ibis Lisboa", type: "飯店", access: "住客最可靠", reliability: "高", lat: 38.7274, lng: -9.1468, note: "退房/寄放行李前先用，半日行程會比較安心。" },
+        { zh: "A Brasileira / 希亞多咖啡館", en: "A Brasileira / Chiado cafés", type: "咖啡/餐飲區", access: "通常需消費", reliability: "中高", lat: 38.7107, lng: -9.1427, note: "早餐咖啡時處理，希亞多坡道前最順。" },
+        { zh: "Armazéns do Chiado", en: "Armazéns do Chiado", type: "商場", access: "商場開放時間內", reliability: "高", lat: 38.7108, lng: -9.1398, note: "希亞多採買段最可靠。" },
+        { zh: "自由大道百貨/飯店咖啡", en: "Avenida da Liberdade hotels and cafés", type: "商業區", access: "通常需消費", reliability: "中", lat: 38.7202, lng: -9.1456, note: "去機場前的最後市區備案，找大型飯店咖啡/商場比小店穩。" },
+        { zh: "里斯本機場", en: "Lisbon Airport", type: "機場", access: "航廈內設施", reliability: "高", lat: 38.7742, lng: -9.1342, note: "進機場後最可靠；安檢前後都先確認。" },
+        { zh: "Barcelona Airport Hotel", en: "Barcelona Airport Hotel", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3196, lng: 2.0745, note: "抵達巴塞隆納後直接回飯店，晚間不再進市區找。" }
+      ],
+      "bcn-0609": [
+        { zh: "Barcelona Airport Hotel", en: "Barcelona Airport Hotel", type: "飯店", access: "住客最可靠", reliability: "高", lat: 41.3196, lng: 2.0745, note: "進市區前先用；回飯店整理行李時也是最可靠點。" },
+        { zh: "El Corte Inglés 加泰隆尼亞廣場", en: "El Corte Inglés Plaça Catalunya", type: "百貨", access: "百貨開放時間內", reliability: "高", lat: 41.3870, lng: 2.1701, note: "購物日核心 WC，適合退稅、補水、用餐和休息。" },
+        { zh: "波蓋利亞市場", en: "Mercat de la Boqueria", type: "市場", access: "市場開放時間內", reliability: "中", lat: 41.3817, lng: 2.1714, note: "市場人多，尖峰可能排隊；購物袋要看好。" },
+        { zh: "桂爾宮館內", en: "Palau Güell", type: "購票景點", access: "入館後使用", reliability: "高", lat: 41.3789, lng: 2.1740, note: "若決定入內參觀，這是蘭布拉南段較可靠的點。" },
+        { zh: "Maremagnum 商場", en: "Maremagnum", type: "商場", access: "商場開放時間內", reliability: "高", lat: 41.3745, lng: 2.1822, note: "舊港/海邊支線最可靠，購物袋多時也適合短休。" },
+        { zh: "Barceloneta 海邊餐飲區", en: "Barceloneta cafés and restaurants", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 41.3794, lng: 2.1893, note: "海灘區不要把包留座位；用餐或買飲料時使用。" },
+        { zh: "Aeroport T1/T2", en: "Barcelona Airport T1/T2", type: "機場", access: "航廈內設施", reliability: "高", lat: 41.2871, lng: 2.0725, note: "回機場飯店/隔天早班機前最後確認，航廈最穩。" }
+      ]
+    };
+
+    days.forEach((day) => {
+      if (wcByDay[day.id]) day.wc = wcByDay[day.id];
+    });
+
     window.itineraryDays = days;
 
     const tabs = document.querySelector(".day-tabs");
@@ -1445,8 +1657,10 @@
     }).addTo(map);
 
     let routeLayer = L.layerGroup().addTo(map);
+    let wcLayer = L.layerGroup().addTo(map);
     let activeDayIndex = 0;
     let activeRouteMarkers = [];
+    let wcVisible = false;
 
     function refreshMapSize(delay = 80) {
       window.setTimeout(() => {
@@ -1457,7 +1671,8 @@
         const altPoints = day.alternatives.map((stop) => [stop.lat, stop.lng]);
         const extraPoints = (day.extras || []).map((stop) => [stop.lat, stop.lng]);
         const suggestedPoints = (day.suggested || []).map((stop) => [stop.lat, stop.lng]);
-        const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints));
+        const wcPoints = (day.wc || []).map((stop) => [stop.lat, stop.lng]);
+        const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints, wcPoints));
         map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
       }, delay);
     }
@@ -1542,7 +1757,13 @@
           <div class="legend-item"><span class="swatch" style="background:#6d7276"></span>餐廳/雨天備案</div>
           ${day.extras ? `<div class="legend-item"><span class="swatch" style="background:#a77a3b"></span>順路餐廳/伴手禮</div>` : ""}
           ${day.suggested ? `<div class="legend-item"><span class="swatch" style="background:#6f5878"></span>值得補充景點</div>` : ""}
+          ${day.wc ? `<div class="legend-item"><span class="swatch" style="background:#2f6583; border-radius:4px"></span>WC 圖層可切換</div>` : ""}
         </div>
+        ${day.wc ? `
+          <div class="tool-row">
+            <button class="toggle-btn" type="button" id="wc-toggle" aria-pressed="false">顯示今日 WC（${day.wc.length}）</button>
+          </div>
+        ` : ""}
         <ol class="timeline">
           ${day.route.map((stop, index) => `
             <li class="stop" tabindex="0" role="button" data-stop-index="${index}" aria-label="在地圖上查看 ${stop.zh}">
@@ -1569,6 +1790,11 @@
             <div class="meta"><b>值得補充景點</b><span>${day.suggested.map((stop) => `${stop.zh}：${stop.note}`).join("　／　")}</span></div>
           </div>
         ` : ""}
+        ${day.wc ? `
+          <div class="meta-grid">
+            <div class="meta"><b>可靠洗手間</b><span>${day.wc.map((stop) => `${stop.zh}（${stop.access}｜${stop.reliability}）：${stop.note}`).join("　／　")}</span></div>
+          </div>
+        ` : ""}
       `;
       details.querySelectorAll(".stop[data-stop-index]").forEach((item) => {
         const stopIndex = Number(item.dataset.stopIndex);
@@ -1580,12 +1806,59 @@
           }
         });
       });
+      const wcToggle = details.querySelector("#wc-toggle");
+      if (wcToggle) {
+        wcToggle.addEventListener("click", () => toggleWcLayer());
+      }
     }
 
     function setActiveStop(stopIndex) {
       details.querySelectorAll(".stop").forEach((item) => {
         item.classList.toggle("is-active", Number(item.dataset.stopIndex) === stopIndex);
       });
+    }
+
+    function updateWcToggle() {
+      const button = details.querySelector("#wc-toggle");
+      const day = days[activeDayIndex];
+      if (!button || !day?.wc) return;
+      button.setAttribute("aria-pressed", wcVisible ? "true" : "false");
+      button.textContent = wcVisible ? `隱藏今日 WC（${day.wc.length}）` : `顯示今日 WC（${day.wc.length}）`;
+    }
+
+    function renderWcLayer(day) {
+      wcLayer.clearLayers();
+      if (!wcVisible || !day?.wc) {
+        updateWcToggle();
+        return;
+      }
+      day.wc.forEach((stop) => {
+        L.marker([stop.lat, stop.lng], {
+          icon: L.divIcon({
+            className: "",
+            html: `<div class="wc-marker">WC</div>`,
+            iconSize: [28, 22],
+            iconAnchor: [14, 11],
+            popupAnchor: [0, -11]
+          }),
+          zIndexOffset: 420
+        })
+          .bindPopup(`
+            <p class="popup-title">WC：${stop.zh}</p>
+            <p class="popup-line">${stop.en}</p>
+            <p class="popup-line">類型：${stop.type}</p>
+            <p class="popup-line">使用：${stop.access}</p>
+            <p class="popup-line">可靠度：${stop.reliability}</p>
+            <p class="popup-line">${stop.note}</p>
+          `)
+          .addTo(wcLayer);
+      });
+      updateWcToggle();
+    }
+
+    function toggleWcLayer() {
+      wcVisible = !wcVisible;
+      renderWcLayer(days[activeDayIndex]);
     }
 
     function focusStop(stopIndex) {
@@ -1603,9 +1876,11 @@
       activeDayIndex = index;
       const day = days[index];
       const color = dayColors[index % dayColors.length];
+      wcVisible = false;
       renderTabs(index);
       renderDetails(day, color);
       routeLayer.clearLayers();
+      wcLayer.clearLayers();
       activeRouteMarkers = [];
 
       const points = day.route.map((stop) => [stop.lat, stop.lng]);
@@ -1663,8 +1938,10 @@
       const altPoints = day.alternatives.map((stop) => [stop.lat, stop.lng]);
       const extraPoints = (day.extras || []).map((stop) => [stop.lat, stop.lng]);
       const suggestedPoints = (day.suggested || []).map((stop) => [stop.lat, stop.lng]);
-      const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints));
+      const wcPoints = (day.wc || []).map((stop) => [stop.lat, stop.lng]);
+      const bounds = L.latLngBounds(points.concat(altPoints, extraPoints, suggestedPoints, wcPoints));
       map.fitBounds(bounds, { padding: [34, 34], maxZoom: 14 });
+      renderWcLayer(day);
       refreshMapSize(120);
     }
 
