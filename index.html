@@ -863,26 +863,128 @@
         label: "Day 1",
         date: "5/26 週二",
         title: "抵達、聖保羅醫院與奎爾公園",
-        budget: "約 EUR 70-115/人；不含 Moxy Barcelona 住宿 EUR 1,190.64/4 晚",
+        budget: "約 EUR 75-125/人；含機場 Uber/計程車約 EUR 35，不含 Moxy Barcelona 住宿 EUR 1,190.64/4 晚",
         weather: "5/21 行前預報：巴塞隆納 5/26 起大致乾爽，約 19-24°C、風弱；抵達日午後戶外段帶水、薄外套與折疊傘即可。",
-        steps: "約 11,000-14,500 步；上限 18,000，奎爾公園有坡，必要時用計程車銜接。",
-        safety: "機場、Sants/Tarragona 轉乘與奎爾公園入口都注意行李與手機；晚上不再安排遠距離移動。",
+        steps: "約 10,500-14,000 步；上限 18,000，聖保羅醫院到奎爾公園優先用 taxi/Bolt 省上坡。",
+        safety: "機場與景點入口注意行李與手機；抵達日晚上只安排飯店附近超市採買與休息，不再遠距離移動。",
         route: [
-          { time: "08:30-10:00", zh: "巴塞隆納機場 T1 出關", en: "Barcelona Airport T1 / EY111", address: "Terminal 1, BCN", lat: 41.2871, lng: 2.0725, note: "出關後可選 R2N、A1 巴士轉 109、L9S 轉 L5 或計程車；行李多時優先計程車。" },
-          { time: "10:00-11:00", zh: "Moxy Barcelona 放行李", en: "Moxy Barcelona", address: "Carrer de Mallorca 1-23", lat: 41.3798, lng: 2.1456, note: "5/26-5/30 入住；先補水、整理隨身物。" },
-          { time: "12:00", zh: "午餐：高第大道／聖保羅醫院周邊", en: "Avinguda de Gaudi lunch area", address: "Avinguda de Gaudi", lat: 41.4076, lng: 2.1747, note: "主選附近簡餐；若餓得早，可在 Moxy 或 Hospital 周邊先吃。" },
-          { time: "13:30-15:00", zh: "聖保羅醫院", en: "Recinte Modernista de Sant Pau", address: "Carrer de Sant Antoni Maria Claret 167", lat: 41.4135, lng: 2.1745, note: "現代主義建築群，已排門票預算；逛完找咖啡坐 20 分鐘。" },
-          { time: "16:00-18:00", zh: "奎爾公園", en: "Park Guell", address: "Carrer d'Olot", lat: 41.4145, lng: 2.1527, note: "已預約。從聖保羅醫院過去建議計程車或公車，省腿力。" },
-          { time: "19:00", zh: "回 Moxy Barcelona 休息", en: "Moxy Barcelona", address: "Carrer de Mallorca 1-23", lat: 41.3798, lng: 2.1456, note: "抵達日不要硬塞晚間景點；附近吃簡單晚餐即可。" }
+          {
+            time: "08:30-10:00",
+            zh: "巴塞隆納機場 T1 出關",
+            en: "Barcelona Airport T1 / EY111",
+            address: "Terminal 1, BCN",
+            lat: 41.2871,
+            lng: 2.0725,
+            note: "新版行程以 Uber/計程車到 Moxy 為主，抓 EUR 35；R2N、A1 bus、L9S 都只當備案。",
+            transit: "機場到 Moxy：首選 Uber/Taxi，約 25-35 分；若改大眾運輸再用 L9S/R2N/Aerobús 方案。"
+          },
+          {
+            time: "10:00-11:00",
+            zh: "Moxy Barcelona 放行李",
+            en: "Moxy Barcelona",
+            address: "Carrer de Mallorca 1-23",
+            lat: 41.3798,
+            lng: 2.1456,
+            note: "5/26-5/30 入住；先補水、整理隨身物。"
+          },
+          {
+            time: "12:00",
+            zh: "午餐：Moxy／聖保羅醫院周邊／高第大道",
+            en: "Moxy / Hospital de Sant Pau / Avinguda de Gaudi lunch",
+            address: "Avinguda de Gaudi",
+            lat: 41.4076,
+            lng: 2.1747,
+            note: "抵達日不追名店，依肚子餓的時間在 Moxy、醫院周邊或高第大道簡單吃。"
+          },
+          {
+            time: "13:30-15:00",
+            zh: "聖保羅醫院",
+            en: "Recinte Modernista de Sant Pau",
+            address: "Carrer de Sant Antoni Maria Claret 167",
+            lat: 41.4135,
+            lng: 2.1745,
+            note: "現代主義建築群，已排門票預算；離開前先上洗手間，再往奎爾公園。"
+          },
+          {
+            time: "15:15",
+            zh: "前往奎爾公園",
+            en: "Sant Pau to Park Guell transfer",
+            address: "Sant Pau to Park Guell",
+            lat: 41.414,
+            lng: 2.164,
+            note: "首選計程車/Bolt 約 10-15 分，省掉上坡體力；大眾運輸可用 V23 公車。",
+            transit: "Sant Pau 到 Park Güell：Taxi/Bolt 最省腿；公車備案 Bus V23，Sant Antoni Maria Claret - Cartagena 上車，Trav de Dalt - Verdi 一帶下車後步行上坡。"
+          },
+          {
+            time: "16:00-18:00",
+            zh: "奎爾公園",
+            en: "Park Guell",
+            address: "Carrer d'Olot",
+            lat: 41.4145,
+            lng: 2.1527,
+            note: "已預約。園區有坡，人多時慢慢走，不要硬爬支線。"
+          },
+          {
+            time: "18:30",
+            zh: "超市採買：Mercadona Carrer de Tarragona",
+            en: "Mercadona Carrer de Tarragona",
+            address: "Carrer de Tarragona, 177, 08014 Barcelona",
+            lat: 41.3808,
+            lng: 2.1453,
+            note: "最適合抵達日買水、水果、優格、簡單熟食與隔天早餐補給；常見營業時間週一至週六 09:00-21:30、週日休，出發前再用地圖確認。",
+            transit: "奎爾公園回 Moxy：體力不足直接 Taxi/Bolt；大眾運輸可下坡到 Lesseps，Metro L3 Lesseps → Tarragona，再步行回 Moxy/Mercadona。"
+          },
+          {
+            time: "19:15",
+            zh: "回 Moxy Barcelona 休息／超市晚餐",
+            en: "Moxy Barcelona / simple supermarket dinner",
+            address: "Carrer de Mallorca 1-23",
+            lat: 41.3798,
+            lng: 2.1456,
+            note: "抵達日晚上用超市採買或飯店附近簡餐收尾，早點睡。"
+          }
         ],
         alternatives: [
-          { zh: "交通備案：計程車", en: "Taxi from BCN", lat: 41.2871, lng: 2.0725, note: "行李多或轉乘疲勞時直接用，約 EUR 30-40。" },
-          { zh: "午餐備案：聖家堂周邊咖啡小館", en: "Sagrada Familia casual lunch", lat: 41.4036, lng: 2.1744, note: "避免在景點正門旁的觀光餐廳久坐。" }
+          {
+            zh: "機場交通備案：R2N / A1 bus / L9S",
+            en: "Airport public transport alternatives",
+            lat: 41.2871,
+            lng: 2.0725,
+            note: "若不搭 Uber，可用 R2N 先到 T2 轉車、A1 到西班牙廣場再轉 109，或 L9S 轉 L5；行李多時不建議折騰。"
+          },
+          {
+            zh: "午餐備案：聖家堂周邊咖啡小館",
+            en: "Sagrada Familia casual lunch",
+            lat: 41.4036,
+            lng: 2.1744,
+            note: "避免在景點正門旁的觀光餐廳久坐。"
+          }
         ],
         extras: [
-          { zh: "Les Truites", en: "Tortilla specialist", address: "Carrer de Viladomat, 324", lat: 41.3954, lng: 2.1490, note: "When in BCN 烘蛋名單；離 Moxy/聖家堂動線近，想吃馬鈴薯烘蛋才順路加。" },
-          { zh: "Senyor Vermut", en: "Vermut & tapas", address: "C/ de Provença, 85", lat: 41.3839, lng: 2.1550, note: "When in BCN tapas 名單；靠近 Moxy，適合抵達日晚餐或小酌備案。" },
-          { zh: "Catànies Cudié 本店", en: "Bombons Cudie Barcelona", address: "Carrer de Calaf, 17", lat: 41.3971, lng: 2.1477, note: "伴手禮文推薦 Catànies 巧克力杏仁；若從 Moxy 往上城方向才順路。" }
+          {
+            zh: "Les Truites",
+            en: "Tortilla specialist",
+            address: "Carrer de Viladomat, 324",
+            lat: 41.3954,
+            lng: 2.149,
+            note: "When in BCN 烘蛋名單；離 Moxy/聖家堂動線近，想吃馬鈴薯烘蛋才順路加。"
+          },
+          {
+            zh: "Senyor Vermut",
+            en: "Vermut & tapas",
+            address: "C/ de Provença, 85",
+            lat: 41.3839,
+            lng: 2.155,
+            note: "When in BCN tapas 名單；靠近 Moxy，適合抵達日晚餐或小酌備案。"
+          },
+          {
+            zh: "Catànies Cudié 本店",
+            en: "Bombons Cudie Barcelona",
+            address: "Carrer de Calaf, 17",
+            lat: 41.3971,
+            lng: 2.1477,
+            note: "伴手禮文推薦 Catànies 巧克力杏仁；若從 Moxy 往上城方向才順路。"
+          }
         ]
       },
       {
@@ -896,25 +998,140 @@
         steps: "約 14,000-17,500 步；可刪哥德區支線或夜景段維持體力。",
         safety: "哥德區傍晚後走主街與廣場，不鑽暗巷；聖家堂夜景後直接搭車回 Moxy。",
         route: [
-          { time: "08:00-09:00", zh: "西班牙廣場與舊鬥牛場", en: "Placa d'Espanya / Arenas", address: "Placa d'Espanya", lat: 41.3750, lng: 2.1490, note: "由 Moxy 步行或搭一站，早上先看廣場與 Arenas 外觀。" },
-          { time: "09:10-10:30", zh: "米羅基金會／蒙特惠奇山", en: "Fundacio Joan Miro / Montjuic", address: "Parc de Montjuic", lat: 41.3680, lng: 2.1600, note: "若想進館就少走山上支線；用公車/纜車減少爬坡。" },
-          { time: "11:00", zh: "回飯店休息", en: "Moxy Barcelona", address: "Carrer de Mallorca 1-23", lat: 41.3798, lng: 2.1456, note: "午前先回 Moxy 補水、休息 45-60 分鐘。" },
-          { time: "12:45", zh: "午餐：西班牙廣場／El Glop／Bar del Pla 候選", en: "Lunch candidates", address: "Barcelona center", lat: 41.3857, lng: 2.1814, note: "若接音樂宮，Bar del Pla 或 Santa Caterina 市場更順；若留西班牙廣場，找簡餐即可。" },
-          { time: "15:00-16:00", zh: "加泰隆尼亞音樂宮", en: "Palau de la Musica Catalana", address: "C/ Palau de la Musica 4-6", lat: 41.3875, lng: 2.1753, note: "保留你表格時段；建議預約導覽或自助參觀。" },
-          { time: "16:15", zh: "下午茶：OGGI／Xurreria／Jon Cake", en: "OGGI / Xurreria / Jon Cake", address: "Ciutat Vella", lat: 41.3849, lng: 2.1746, note: "三選一即可，作為哥德區前的坐下休息。" },
-          { time: "17:15-19:15", zh: "加泰隆尼亞廣場與哥德區", en: "Placa Catalunya / Gothic Quarter", address: "Placa de Catalunya", lat: 41.3870, lng: 2.1701, note: "Kissing Wall、主教橋、國王廣場、巴塞隆納大教堂、聖若梅廣場串成一圈。" },
-          { time: "20:30", zh: "晚餐：加泰隆尼亞廣場附近", en: "Dinner near Placa Catalunya", address: "Placa de Catalunya", lat: 41.3870, lng: 2.1701, note: "選交通方便餐廳，飯後不要再深入哥德區窄巷。" },
-          { time: "20:30-21:30", zh: "聖家堂夜景", en: "Sagrada Familia night view", address: "Carrer de Mallorca 401", lat: 41.4036, lng: 2.1744, note: "若晚餐拉長可取消；夜景後搭地鐵/計程車回。" }
+          {
+            time: "08:00-11:00",
+            zh: "蒙特惠奇山、米羅美術館與西班牙村",
+            en: "Mirador de Montjuic / Fundacio Joan Miro / Poble Espanyol",
+            address: "Montjuic",
+            lat: 41.3665,
+            lng: 2.1674,
+            note: "新版行程改從靠海制高點串米羅美術館、西班牙村與西班牙廣場；山上段不硬走，必要時 taxi。",
+            transit: "Moxy 到 Mirador de Montjuïc：建議 taxi/Bolt 約 4 km；下山可公車或短程車到西班牙廣場。"
+          },
+          {
+            time: "11:15",
+            zh: "回 Moxy Barcelona 休息",
+            en: "Moxy Barcelona",
+            address: "Carrer de Mallorca 1-23",
+            lat: 41.3798,
+            lng: 2.1456,
+            note: "新版 Excel 估 taxi 約 EUR 9；回飯店補水、休息。"
+          },
+          {
+            time: "12:45",
+            zh: "午餐：Santa Caterina／Bar del Pla／El Glop／西班牙廣場",
+            en: "Lunch candidates",
+            address: "Barcelona center",
+            lat: 41.3866,
+            lng: 2.1782,
+            note: "若接音樂宮，Bar del Pla 或 Santa Caterina 市場更順；若留西班牙廣場，找簡餐即可。",
+            transit: "若從 Moxy 去 Bar del Pla/Santa Caterina：Metro L3 Tarragona → Passeig de Gràcia，換 L4 → Jaume I 後步行；若留西班牙廣場則步行即可。"
+          },
+          {
+            time: "15:00-16:00",
+            zh: "加泰隆尼亞音樂宮",
+            en: "Palau de la Musica Catalana",
+            address: "C/ Palau de la Musica 4-6",
+            lat: 41.3875,
+            lng: 2.1753,
+            note: "保留你表格時段；建議預約導覽或自助參觀。"
+          },
+          {
+            time: "16:15",
+            zh: "下午茶：Jon Cake／OGGI／Xurreria",
+            en: "Jon Cake / OGGI / Xurreria",
+            address: "Ciutat Vella",
+            lat: 41.3849,
+            lng: 2.1746,
+            note: "新版順序以 Jon Cake 優先；OGGI 可麗餅、鬆餅、gelato 或 Xurreria churros 作備案。"
+          },
+          {
+            time: "17:15",
+            zh: "加泰隆尼亞廣場與英國宮百貨",
+            en: "Plaça Catalunya / El Corte Inglés",
+            address: "Plaça de Catalunya",
+            lat: 41.387,
+            lng: 2.1701,
+            note: "順手補貨、上洗手間或短休；百貨比老城小店更穩。"
+          },
+          {
+            time: "18:00-19:30",
+            zh: "哥德區：Kissing Wall、主教橋與國王廣場",
+            en: "Gothic Quarter walk",
+            address: "Barri Gotic",
+            lat: 41.3838,
+            lng: 2.1762,
+            note: "走主街與廣場，不鑽暗巷；國王廣場、巴塞隆納大教堂、聖若梅廣場、Carrer del Bisbe 擇重點。"
+          },
+          {
+            time: "19:45",
+            zh: "晚餐：加泰隆尼亞廣場附近",
+            en: "Dinner near Plaça Catalunya",
+            address: "Plaça de Catalunya",
+            lat: 41.387,
+            lng: 2.1701,
+            note: "選交通方便餐廳，飯後不要再深入哥德區窄巷。"
+          },
+          {
+            time: "20:30-21:30",
+            zh: "聖家堂夜景",
+            en: "Sagrada Familia night view",
+            address: "Carrer de Mallorca 401",
+            lat: 41.4036,
+            lng: 2.1744,
+            note: "若晚餐拉長可取消；夜景後直接搭車回 Moxy。",
+            transit: "聖家堂夜景後回 Moxy：Metro L5 Sagrada Família → Sants Estació，再步行；疲累就 taxi/Bolt。"
+          }
         ],
         alternatives: [
-          { zh: "午餐備案：Santa Caterina 市場", en: "Mercat de Santa Caterina", lat: 41.3866, lng: 2.1782, note: "接音樂宮和哥德區最順。" },
-          { zh: "晚餐備案：Vinitus", en: "Vinitus", lat: 41.3898, lng: 2.1638, note: "若想回擴展區吃飯，交通明亮方便。" }
+          {
+            zh: "午餐備案：Santa Caterina 市場",
+            en: "Mercat de Santa Caterina",
+            lat: 41.3866,
+            lng: 2.1782,
+            note: "接音樂宮和哥德區最順。"
+          },
+          {
+            zh: "晚餐備案：Vinitus",
+            en: "Vinitus",
+            lat: 41.3898,
+            lng: 2.1638,
+            note: "若想回擴展區吃飯，交通明亮方便。"
+          }
         ],
         extras: [
-          { zh: "Brunells 百年糕點店", en: "Brunells", address: "Carrer de la Princesa, 22", lat: 41.3856, lng: 2.1812, note: "When in BCN 早餐/伴手禮都提到；音樂宮到哥德區順路，買可頌或 Enric Rovira 地磚巧克力。" },
-          { zh: "Flor de Barcelona", en: "Flor de Barcelona", address: "Plaça de la Llana, 7", lat: 41.3853, lng: 2.1796, note: "伴手禮文推薦花地磚托特包；在波恩/哥德區動線上。" },
-          { zh: "Marteliè 花地磚首飾", en: "Martelie", address: "Carrer de la Bòria, 23", lat: 41.3851, lng: 2.1791, note: "伴手禮文推薦純銀花地磚首飾；和 Flor 很近，可順手看。" },
-          { zh: "Caganer.com 哥德區店", en: "Caganer.com", address: "Carrer dels Banys Nous, 4", lat: 41.3832, lng: 2.1757, note: "加泰隆尼亞限定趣味伴手禮；逛哥德區時順路，不用特地去。" }
+          {
+            zh: "Brunells 百年糕點店",
+            en: "Brunells",
+            address: "Carrer de la Princesa, 22",
+            lat: 41.3856,
+            lng: 2.1812,
+            note: "When in BCN 早餐/伴手禮都提到；音樂宮到哥德區順路，買可頌或 Enric Rovira 地磚巧克力。"
+          },
+          {
+            zh: "Flor de Barcelona",
+            en: "Flor de Barcelona",
+            address: "Plaça de la Llana, 7",
+            lat: 41.3853,
+            lng: 2.1796,
+            note: "伴手禮文推薦花地磚托特包；在波恩/哥德區動線上。"
+          },
+          {
+            zh: "Marteliè 花地磚首飾",
+            en: "Martelie",
+            address: "Carrer de la Bòria, 23",
+            lat: 41.3851,
+            lng: 2.1791,
+            note: "伴手禮文推薦純銀花地磚首飾；和 Flor 很近，可順手看。"
+          },
+          {
+            zh: "Caganer.com 哥德區店",
+            en: "Caganer.com",
+            address: "Carrer dels Banys Nous, 4",
+            lat: 41.3832,
+            lng: 2.1757,
+            note: "加泰隆尼亞限定趣味伴手禮；逛哥德區時順路，不用特地去。"
+          }
         ]
       },
       {
@@ -922,29 +1139,136 @@
         city: "巴塞隆納",
         label: "Day 3",
         date: "5/28 週四",
-        title: "聖家堂、波恩區與焦糖山支線",
+        title: "聖家堂、Quimet & Quimet 與 MNAC 夜間水舞",
         budget: "約 EUR 95-155/人；含聖家堂、畢卡索、餐食與交通",
-        weather: "5/21 行前預報：巴塞隆納 5/28-5/29 轉暖、 mostly dry，約 20-26°C；傍晚焦糖山風較明顯，日落支線看雲量與體力決定。",
-        steps: "主線約 12,500-15,500 步；加焦糖山可接近 18,000 步。",
-        safety: "波恩區白天適合步行；焦糖山日落後下山請搭車，不走暗路。",
+        weather: "5/21 行前預報：巴塞隆納 5/28-5/29 轉暖、 mostly dry，約 20-26°C；這天改以聖家堂、波恩區與 MNAC 為主，午後注意補水與室內休息。",
+        steps: "約 13,500-17,500 步；已移除焦糖山，把體力留給聖家堂、波恩區與 MNAC。",
+        safety: "波恩區白天適合步行；MNAC/西班牙廣場夜間走主動線，水舞後直接搭車或地鐵回。",
         route: [
-          { time: "09:00-12:00", zh: "聖家堂", en: "Sagrada Familia", address: "Carrer de Mallorca 401", lat: 41.4036, lng: 2.1744, note: "已預約。留足時間看彩窗、立面與博物館區。" },
-          { time: "13:00", zh: "午餐：聖家堂／波恩區銜接", en: "Lunch near Sagrada or Born", address: "Barcelona", lat: 41.3950, lng: 2.1770, note: "若想省步數，在聖家堂周邊吃；若精神好再移到波恩。" },
-          { time: "14:15", zh: "回飯店休息", en: "Moxy Barcelona", address: "Carrer de Mallorca 1-23", lat: 41.3798, lng: 2.1456, note: "下午老城區前先休息 60-90 分鐘。" },
-          { time: "16:00-17:00", zh: "畢卡索美術館", en: "Museu Picasso", address: "Carrer de Montcada 15-23", lat: 41.3852, lng: 2.1809, note: "保留你表格時段，抓重點看，不硬逛完。" },
-          { time: "17:15", zh: "波恩區與海上聖母聖殿", en: "El Born / Santa Maria del Mar", address: "Placa de Santa Maria 1", lat: 41.3839, lng: 2.1821, note: "你表格的「城堡山」我解讀為波恩/老城支線，這段保持短散步。" },
-          { time: "19:15", zh: "焦糖山日落（可選支線）", en: "Bunkers del Carmel", address: "Carrer de Maria Labernia", lat: 41.4190, lng: 2.1614, note: "體力好再去；日落後叫車或搭公車下山。" },
-          { time: "21:00-22:00", zh: "MNAC 魔幻噴泉區", en: "Magic Fountain / MNAC", address: "Placa de Carles Buigas", lat: 41.3712, lng: 2.1517, note: "需確認當期是否有水舞；若無表演，就改西班牙廣場晚餐後散步。" }
+          {
+            time: "09:00-12:00",
+            zh: "聖家堂",
+            en: "Sagrada Familia",
+            address: "Carrer de Mallorca 401",
+            lat: 41.4036,
+            lng: 2.1744,
+            note: "已預約。留足時間看彩窗、立面與博物館區。",
+            transit: "Moxy 到聖家堂：Metro L5 Sants Estació → Sagrada Família，出站即到；早上比公車穩。"
+          },
+          {
+            time: "12:05",
+            zh: "紀念碑鬥牛場（可選）",
+            en: "La Monumental",
+            address: "Gran Via de les Corts Catalanes 749",
+            lat: 41.4,
+            lng: 2.181,
+            note: "若聖家堂結束後還有體力或時間，可順道看外觀；不入內也可。"
+          },
+          {
+            time: "12:45",
+            zh: "回 Moxy Barcelona 休息",
+            en: "Moxy Barcelona",
+            address: "Carrer de Mallorca 1-23",
+            lat: 41.3798,
+            lng: 2.1456,
+            note: "午餐前後視體力休息 45-60 分鐘。"
+          },
+          {
+            time: "13:45",
+            zh: "午餐：Quimet & Quimet",
+            en: "Quimet & Quimet",
+            address: "Carrer del Poeta Cabanyes, 25",
+            lat: 41.3734,
+            lng: 2.1663,
+            note: "新版指定午餐，營業約 12:00-16:00；站食名店，若排隊太久就改 Poble-sec 周邊簡餐。",
+            transit: "Moxy 到 Quimet & Quimet：可搭 Metro L3 Tarragona → Paral·lel，再步行；或短程 taxi。"
+          },
+          {
+            time: "15:15",
+            zh: "城堡公園／海上聖母瑪利亞教堂",
+            en: "Parc de la Ciutadella / Santa Maria del Mar",
+            address: "El Born",
+            lat: 41.385,
+            lng: 2.1833,
+            note: "從 Poble-sec 移到波恩區後短散步，抓重點，不硬繞完整公園。"
+          },
+          {
+            time: "16:00-17:00",
+            zh: "畢卡索美術館",
+            en: "Museu Picasso",
+            address: "Carrer de Montcada 15-23",
+            lat: 41.3852,
+            lng: 2.1809,
+            note: "新版保留 16:00-17:00，館方營業時間出發前再確認；抓重點看。"
+          },
+          {
+            time: "19:00",
+            zh: "晚餐：La Paella de Su Pau Claris",
+            en: "La Paella de Su Pau Claris",
+            address: "Carrer de Pau Claris",
+            lat: 41.3912,
+            lng: 2.1706,
+            note: "新版指定晚餐，約 19:00 後；若客滿改 Bodega Amposta。"
+          },
+          {
+            time: "21:00-22:00",
+            zh: "MNAC 魔幻噴泉區",
+            en: "Magic Fountain / MNAC",
+            address: "Plaça de Carles Buïgas",
+            lat: 41.3712,
+            lng: 2.1517,
+            note: "新版保留水舞，表格註記 21:00 與 21:30 各一場；出發前務必確認當期是否有表演。"
+          }
         ],
         alternatives: [
-          { zh: "晚餐備案：西班牙廣場周邊", en: "Placa Espanya dinner", lat: 41.3750, lng: 2.1490, note: "若要接 MNAC，這區最順。" },
-          { zh: "雨天備案：海洋聖母聖殿＋咖啡館", en: "Santa Maria del Mar + cafe", lat: 41.3839, lng: 2.1821, note: "取消焦糖山與噴泉。" }
+          {
+            zh: "晚餐備案：Bodega Amposta",
+            en: "Bodega Amposta",
+            lat: 41.375,
+            lng: 2.149,
+            note: "若想接西班牙廣場/MNAC，19:30-22:30 時段較順，可先訂位。"
+          },
+          {
+            zh: "雨天備案：海洋聖母聖殿＋咖啡館",
+            en: "Santa Maria del Mar + cafe",
+            lat: 41.3839,
+            lng: 2.1821,
+            note: "取消戶外公園與 MNAC，只保留室內/短步行。"
+          }
         ],
         extras: [
-          { zh: "El Xampanyet", en: "El Xampanyet", address: "C/ de Montcada, 22", lat: 41.3850, lng: 2.1814, note: "When in BCN tapas 名單；就在畢卡索美術館旁，適合早到排隊小吃。" },
-          { zh: "Casa Gispert", en: "Casa Gispert", address: "C/ dels Sombrerers, 23", lat: 41.3838, lng: 2.1817, note: "伴手禮文提到寄賣 Enric Rovira 地磚巧克力；也適合買堅果。" },
-          { zh: "Quimet & Quimet", en: "Quimet & Quimet", address: "Carrer del Poeta Cabanyes, 25", lat: 41.3734, lng: 2.1663, note: "When in BCN tapas/百年酒館推薦；若晚上真的去 MNAC/西班牙廣場，才順路列入。" },
-          { zh: "Bar El Pollo", en: "Bar El Pollo", address: "Carrer del Tigre, 31", lat: 41.3826, lng: 2.1667, note: "When in BCN 推馬鈴薯烘蛋與起司蛋糕；若從老城往 Moxy 回程可順路。" }
+          {
+            zh: "El Xampanyet",
+            en: "El Xampanyet",
+            address: "C/ de Montcada, 22",
+            lat: 41.385,
+            lng: 2.1814,
+            note: "When in BCN tapas 名單；就在畢卡索美術館旁，適合早到排隊小吃。"
+          },
+          {
+            zh: "Casa Gispert",
+            en: "Casa Gispert",
+            address: "C/ dels Sombrerers, 23",
+            lat: 41.3838,
+            lng: 2.1817,
+            note: "伴手禮文提到寄賣 Enric Rovira 地磚巧克力；也適合買堅果。"
+          },
+          {
+            zh: "Quimet & Quimet",
+            en: "Quimet & Quimet",
+            address: "Carrer del Poeta Cabanyes, 25",
+            lat: 41.3734,
+            lng: 2.1663,
+            note: "When in BCN tapas/百年酒館推薦；若晚上真的去 MNAC/西班牙廣場，才順路列入。"
+          },
+          {
+            zh: "Bar El Pollo",
+            en: "Bar El Pollo",
+            address: "Carrer del Tigre, 31",
+            lat: 41.3826,
+            lng: 2.1667,
+            note: "When in BCN 推馬鈴薯烘蛋與起司蛋糕；若從老城往 Moxy 回程可順路。"
+          }
         ]
       },
       {
@@ -952,29 +1276,126 @@
         city: "巴塞隆納",
         label: "Day 4",
         date: "5/29 週五",
-        title: "擴展區、米拉之家與巴特婁之家",
+        title: "高第建築、La Flauta 與焦糖山日落",
         budget: "約 EUR 140-210/人；含米拉之家、巴特婁之家、餐食",
         weather: "5/21 行前預報：5/29 巴塞隆納約 20-26°C、降雨機率低；午後逛恩典大道容易曬，善用米拉之家/咖啡館/飯店短休。",
-        steps: "約 11,000-15,000 步；兩個高第室內點之間保留午餐與休息。",
+        steps: "約 14,000-18,000 步；焦糖山移到這天，若購物或高第參觀太累就刪日落。",
         safety: "恩典大道與擴展區照明佳，但名店與景點門口扒手多；晚餐後走大路或搭車回 Moxy。",
         route: [
-          { time: "10:00", zh: "擴展區與恩典大道", en: "Eixample / Passeig de Gracia", address: "Passeig de Gracia", lat: 41.3917, lng: 2.1649, note: "先看街廓、精品與外觀，別逛到忘記午餐。" },
-          { time: "11:30", zh: "舊鬥牛場 Arenas／購物支線", en: "Arenas de Barcelona", address: "Gran Via de les Corts Catalanes 373", lat: 41.3776, lng: 2.1497, note: "若前一天已看過可刪，留時間給午餐。" },
-          { time: "13:00", zh: "午餐候選：La Pubilla／Moscada／La Flauta／Vinitus", en: "Lunch candidates", address: "Eixample / Gracia", lat: 41.3950, lng: 2.1600, note: "依當天位置選；La Pubilla 偏格拉西亞，Vinitus/La Flauta 偏擴展區。" },
-          { time: "14:45-16:45", zh: "米拉之家（採石場）", en: "Casa Mila / La Pedrera", address: "Pg. de Gracia 92", lat: 41.3954, lng: 2.1619, note: "保留你表格時段；屋頂日曬強，帶水。" },
-          { time: "17:00", zh: "咖啡／飯店短休息", en: "Coffee or hotel break", address: "Eixample", lat: 41.3925, lng: 2.1628, note: "兩個高第室內點中間一定坐下休息。" },
-          { time: "19:15-20:45", zh: "巴特婁之家", en: "Casa Batllo", address: "Passeig de Gracia 43", lat: 41.3917, lng: 2.1649, note: "保留你表格時段；晚間燈光很適合。" },
-          { time: "21:00", zh: "晚餐候選：Vinitus／La Flauta／La Paella de Su Pau Claris", en: "Dinner candidates", address: "Eixample", lat: 41.3898, lng: 2.1638, note: "晚餐選恩典大道附近，飯後交通最輕鬆。" }
+          {
+            time: "10:00",
+            zh: "擴展區、恩典大道建築群與紀念碑鬥牛場",
+            en: "Eixample / Passeig de Gracia / La Monumental",
+            address: "Passeig de Gracia / La Monumental",
+            lat: 41.3917,
+            lng: 2.1649,
+            note: "新版把紀念碑鬥牛場放進建築日；可只看外觀，再回恩典大道。"
+          },
+          {
+            time: "12:00-13:30",
+            zh: "午餐候選：La Pubilla／Moscada／La Flauta／Vinitus",
+            en: "Lunch wish list",
+            address: "Eixample / Gracia",
+            lat: 41.395,
+            lng: 2.16,
+            note: "新版標為 wish list；依當下位置和排隊決定，不追太遠。"
+          },
+          {
+            time: "13:30-15:00",
+            zh: "米拉之家（採石場）",
+            en: "Casa Mila / La Pedrera",
+            address: "Pg. de Gracia 92",
+            lat: 41.3954,
+            lng: 2.1619,
+            note: "新版時段提前；屋頂日曬強，帶水。"
+          },
+          {
+            time: "15:00-16:00",
+            zh: "下午茶或其他景點",
+            en: "Tea break / flexible sight",
+            address: "Passeig de Gracia",
+            lat: 41.3925,
+            lng: 2.1628,
+            note: "兩個高第室內點中間坐下休息，也可補 Chocolate Amatller。"
+          },
+          {
+            time: "16:00-18:00",
+            zh: "巴特婁之家",
+            en: "Casa Batllo",
+            address: "Passeig de Gracia 43",
+            lat: 41.3917,
+            lng: 2.1649,
+            note: "新版改為 16:00-18:00，參觀後直接銜接晚餐。"
+          },
+          {
+            time: "18:00-20:00",
+            zh: "晚餐：La Flauta",
+            en: "La Flauta",
+            address: "Carrer d’Aribau, 23",
+            lat: 41.388,
+            lng: 2.16,
+            note: "新版指定晚餐；熱門店，早一點去比較穩。"
+          },
+          {
+            time: "20:00-21:30",
+            zh: "焦糖山日落",
+            en: "MUHBA Turó de la Rovira / Bunkers del Carmel",
+            address: "Carrer de Maria Labernia",
+            lat: 41.419,
+            lng: 2.1614,
+            note: "新版把焦糖山移到這天；從 La Flauta taxi 約 7.5km，抓 EUR 16 左右。日落後直接搭車回 Moxy。",
+            transit: "La Flauta 到焦糖山：首選 taxi/Bolt；回程也建議叫車，不走暗路下山。"
+          }
         ],
         alternatives: [
-          { zh: "備案午餐：La Flauta", en: "La Flauta", lat: 41.3903, lng: 2.1572, note: "擴展區方便、選擇多。" },
-          { zh: "備案晚餐：Vinitus", en: "Vinitus", lat: 41.3898, lng: 2.1638, note: "熱門，尖峰需排隊。" }
+          {
+            zh: "備案午餐：Vinitus 或 La Flauta",
+            en: "Vinitus / La Flauta",
+            lat: 41.3898,
+            lng: 2.1638,
+            note: "擴展區方便、選擇多；若晚餐已定 La Flauta，中午可換 Vinitus。"
+          },
+          {
+            zh: "焦糖山備案：飯店早休息",
+            en: "Skip Bunkers and rest",
+            lat: 41.3798,
+            lng: 2.1456,
+            note: "若步數已接近 18,000 或天氣不佳，直接取消焦糖山。"
+          }
         ],
         extras: [
-          { zh: "Chocolate Amatller", en: "Chocolate Amatller", address: "C/ de Provença, 269", lat: 41.3922, lng: 2.1648, note: "伴手禮文推薦 Simón Coll/巧克力購買點；米拉之家、巴特婁之家中間超順。" },
-          { zh: "Bar Alegría", en: "Bar Alegria", address: "Carrer del Comte Borrell, 133", lat: 41.3815, lng: 2.1595, note: "When in BCN 烘蛋名單；黑松露馬鈴薯烘蛋，靠近 Sant Antoni/擴展區。" },
-          { zh: "Bo de Bernat", en: "Bo de Bernat", address: "Carrer del Comte d’Urgell, 27", lat: 41.3787, lng: 2.1617, note: "When in BCN 早餐名單；若從 Moxy 到擴展區前想吃傳統加泰菜可順路。" },
-          { zh: "Gelida", en: "Gelida", address: "Carrer de la Diputació, 133", lat: 41.3827, lng: 2.1570, note: "When in BCN 早餐名單；離 Moxy 不遠，適合重口味傳統早餐。" }
+          {
+            zh: "Chocolate Amatller",
+            en: "Chocolate Amatller",
+            address: "C/ de Provença, 269",
+            lat: 41.3922,
+            lng: 2.1648,
+            note: "伴手禮文推薦 Simón Coll/巧克力購買點；米拉之家、巴特婁之家中間超順。"
+          },
+          {
+            zh: "Bar Alegría",
+            en: "Bar Alegria",
+            address: "Carrer del Comte Borrell, 133",
+            lat: 41.3815,
+            lng: 2.1595,
+            note: "When in BCN 烘蛋名單；黑松露馬鈴薯烘蛋，靠近 Sant Antoni/擴展區。"
+          },
+          {
+            zh: "Bo de Bernat",
+            en: "Bo de Bernat",
+            address: "Carrer del Comte d’Urgell, 27",
+            lat: 41.3787,
+            lng: 2.1617,
+            note: "When in BCN 早餐名單；若從 Moxy 到擴展區前想吃傳統加泰菜可順路。"
+          },
+          {
+            zh: "Gelida",
+            en: "Gelida",
+            address: "Carrer de la Diputació, 133",
+            lat: 41.3827,
+            lng: 2.157,
+            note: "When in BCN 早餐名單；離 Moxy 不遠，適合重口味傳統早餐。"
+          }
         ]
       },
       {
@@ -982,24 +1403,109 @@
         city: "巴塞隆納→馬德里",
         label: "Day 5",
         date: "5/30 週六",
-        title: "搭車到馬德里、聖米格爾市場與王宮",
+        title: "抵達馬德里、王宮老城與阿穆德納夜景",
         budget: "約 EUR 240-330/人；含 D4DPTY 交通 EUR 153.92 與王宮門票餐食",
         weather: "5/21 行前預報：馬德里 5/30 起偏乾熱，約 20-29°C；抵達後廣場日曬強，先放行李、補水，再走老城主線。",
-        steps: "約 12,000-16,000 步；把晚間夜景列為可選，避免轉城日爆量。",
+        steps: "約 11,500-15,500 步；已取消普拉多免費時段，把轉城日留給王宮與老城。",
         safety: "阿托查、聖米格爾市場、太陽門人潮多；飯後避免在主廣場周邊低頭滑手機。",
         route: [
-          { time: "08:45-12:02", zh: "巴塞隆納到馬德里", en: "Barcelona to Madrid / D4DPTY", address: "Barcelona Sants to Madrid", lat: 41.3791, lng: 2.1400, note: "座位 9A/9B，Fresh & Spanish breakfast；到站後先去飯店。" },
-          { time: "12:20", zh: "AC Hotel Atocha 放行李", en: "AC Hotel Atocha", address: "Calle de las Delicias 42", lat: 40.4037, lng: -3.6930, note: "5/30-6/2 入住；靠阿托查，交通方便。" },
-          { time: "13:30", zh: "午餐：聖米格爾市場", en: "Mercado de San Miguel", address: "Plaza de San Miguel", lat: 40.4154, lng: -3.7089, note: "觀光但方便，當作抵達日輕食；留意包包。" },
-          { time: "14:30", zh: "Casa Labra 炸鱈魚球／Botín 碰運氣", en: "Casa Labra / Botin", address: "Calle de Tetuan 12", lat: 40.4171, lng: -3.7046, note: "Casa Labra 適合快速；Botín 若沒訂位就當外觀或臨場問位。" },
-          { time: "15:15", zh: "太陽門廣場與主廣場", en: "Puerta del Sol / Plaza Mayor", address: "Puerta del Sol", lat: 40.4169, lng: -3.7035, note: "短走一圈，不在最擁擠處停留太久。" },
-          { time: "16:00-17:30", zh: "馬德里王宮", en: "Royal Palace of Madrid", address: "Calle de Bailen s/n", lat: 40.4179, lng: -3.7143, note: "表格已列時段；週六皇家衛兵換班通常 11:00-14:00，這天以入內參觀為主。" },
-          { time: "20:30", zh: "晚餐：Botín 烤乳豬／飯店附近", en: "Sobrino de Botin / near hotel", address: "Calle de Cuchilleros 17", lat: 40.4140, lng: -3.7081, note: "若 Botín 無位，改阿托查或文學區餐廳更穩。" },
-          { time: "18:00-20:00", zh: "普拉多免費時段（可選）", en: "Museo del Prado free hours", address: "Paseo del Prado", lat: 40.4138, lng: -3.6921, note: "轉城日有體力才去；不建議為免費時段硬排隊。" }
+          {
+            time: "08:45-12:02",
+            zh: "巴塞隆納到馬德里",
+            en: "Barcelona to Madrid / D4DPTY",
+            address: "Barcelona Sants to Madrid",
+            lat: 41.3791,
+            lng: 2.14,
+            note: "座位 9A/9B，Fresh & Spanish breakfast；到站後先去飯店。"
+          },
+          {
+            time: "12:20",
+            zh: "AC Hotel Atocha 放行李",
+            en: "AC Hotel Atocha",
+            address: "Calle de las Delicias 42",
+            lat: 40.4037,
+            lng: -3.693,
+            note: "5/30-6/2 入住；新版加入 Multi Card + 10 次票建議，可多人同行共用。"
+          },
+          {
+            time: "13:30",
+            zh: "午餐：Botín 碰運氣",
+            en: "Sobrino de Botin",
+            address: "Calle de Cuchilleros 17",
+            lat: 40.414,
+            lng: -3.7081,
+            note: "新版把 Botín 放到午餐主選；若無位就當晚餐或外觀，別久等。"
+          },
+          {
+            time: "14:10",
+            zh: "聖米格爾市場",
+            en: "Mercado de San Miguel",
+            address: "Plaza de San Miguel",
+            lat: 40.4154,
+            lng: -3.7089,
+            note: "營業約 10:00-00:00；若 Botín 沒位，這裡可快速補食。"
+          },
+          {
+            time: "14:45",
+            zh: "Casa Labra／Casa Revuelta／La Campana 炸物",
+            en: "Casa Labra / Casa Revuelta / La Campana",
+            address: "Central Madrid",
+            lat: 40.416,
+            lng: -3.706,
+            note: "炸鱈魚球或炸花枝三選一，當老城小吃支線。"
+          },
+          {
+            time: "15:15",
+            zh: "太陽門廣場與主廣場",
+            en: "Puerta del Sol / Plaza Mayor",
+            address: "Puerta del Sol",
+            lat: 40.4169,
+            lng: -3.7035,
+            note: "主廣場到馬德里王宮步行約 12-15 分，沿 Calle Mayor 走主街。"
+          },
+          {
+            time: "16:00-17:30",
+            zh: "馬德里王宮",
+            en: "Royal Palace of Madrid",
+            address: "Calle de Bailen s/n",
+            lat: 40.4179,
+            lng: -3.7143,
+            note: "表格已列時段；週六皇家衛兵換班通常 11:00-14:00，這天以入內參觀為主。"
+          },
+          {
+            time: "20:00",
+            zh: "晚餐：Botín 烤乳豬／阿托查或文學區備案",
+            en: "Botin dinner / Atocha or Barrio de las Letras backup",
+            address: "Calle de Cuchilleros 17",
+            lat: 40.414,
+            lng: -3.7081,
+            note: "Botín 晚餐常見 20:00-23:30；若無位，改阿托查或文學區餐廳更穩。"
+          },
+          {
+            time: "21:00",
+            zh: "阿穆德納聖母主教堂夜景",
+            en: "Almudena Cathedral night view",
+            address: "Calle de Bailen 10",
+            lat: 40.4156,
+            lng: -3.7145,
+            note: "新版取代普拉多免費時段；若晚餐不在王宮區，這段可刪。"
+          }
         ],
         alternatives: [
-          { zh: "晚餐備案：Taberna La Elisa", en: "Taberna La Elisa", lat: 40.4131, lng: -3.6977, note: "文學區、離飯店不遠。" },
-          { zh: "夜景備案：阿穆德納主教座堂", en: "Almudena Cathedral night view", lat: 40.4156, lng: -3.7145, note: "若晚餐在王宮區附近再去，否則取消。" }
+          {
+            zh: "晚餐備案：文學區或 Atocha 附近",
+            en: "Barrio de las Letras / Atocha dinner",
+            lat: 40.4131,
+            lng: -3.6977,
+            note: "比老城深處更好回飯店。"
+          },
+          {
+            zh: "小吃備案：Casa Revuelta / La Campana",
+            en: "Casa Revuelta / La Campana",
+            lat: 40.415,
+            lng: -3.7073,
+            note: "炸鱈魚球或炸花枝，適合排不到 Botín 時。"
+          }
         ]
       },
       {
@@ -1007,23 +1513,75 @@
         city: "馬德里",
         label: "Day 6",
         date: "5/31 週日",
-        title: "跳蚤市場、觀光巴士與普拉多免費時段",
+        title: "跳蚤市場、觀光巴士與市區購物",
         budget: "約 EUR 80-140/人；含觀光巴士 EUR 29.7/人、餐食與交通",
         weather: "5/21 行前預報：5/31 馬德里大致晴乾，白天可到 28-29°C；El Rastro 與廣場需帽子、防曬和水，午後觀光巴士當休息移動。",
-        steps: "約 13,000-17,500 步；觀光巴士可大幅減少步行壓力。",
+        steps: "約 12,500-16,500 步；已取消普拉多免費時段與阿穆德納夜景，午後用觀光巴士/購物調節體力。",
         safety: "El Rastro 是扒手高風險區，現金少帶、包包放身前；晚間夜景走主街或搭車。",
         route: [
-          { time: "09:00-11:00", zh: "El Rastro 跳蚤市場", en: "El Rastro de Madrid", address: "Calle de la Ribera de Curtidores", lat: 40.4079, lng: -3.7070, note: "表格 09:00-15:00；建議早到早走，避開最擠時段。" },
-          { time: "11:30", zh: "主廣場／太陽門補遺", en: "Plaza Mayor / Puerta del Sol", address: "Plaza Mayor", lat: 40.4155, lng: -3.7074, note: "若前一天已充分看過，直接午餐。" },
-          { time: "12:45", zh: "午餐：Casa Revuelta 或 La Campana", en: "Casa Revuelta / La Campana", address: "Calle de Botoneras", lat: 40.4150, lng: -3.7073, note: "簡單吃，下午保留觀光巴士與普拉多。" },
-          { time: "14:00-16:30", zh: "馬德里觀光巴士", en: "Madrid sightseeing bus", address: "Central Madrid loop", lat: 40.4190, lng: -3.6950, note: "用巴士串太陽門、王宮、Cibeles、麗池、阿爾卡拉門、Gran Via、西班牙廣場、德波神殿等點。" },
-          { time: "17:00-19:00", zh: "普拉多美術館免費時段", en: "Museo del Prado free hours", address: "Paseo del Prado s/n", lat: 40.4138, lng: -3.6921, note: "週日免費時段人多，只看精選名作；若排隊太長就放棄。" },
-          { time: "20:30", zh: "晚餐：文學區／阿托查附近", en: "Barrio de las Letras / Atocha dinner", address: "Barrio de las Letras", lat: 40.4131, lng: -3.6977, note: "選離飯店近且明亮的餐廳。" },
-          { time: "21:00-22:00", zh: "阿穆德納主教座堂夜景", en: "Almudena Cathedral night view", address: "Calle de Bailen 10", lat: 40.4156, lng: -3.7145, note: "可選支線；若已超過 16,000 步就取消。" }
+          {
+            time: "09:00-11:00",
+            zh: "El Rastro 跳蚤市場",
+            en: "El Rastro de Madrid",
+            address: "Calle de la Ribera de Curtidores",
+            lat: 40.4079,
+            lng: -3.707,
+            note: "新版註記扒手多；早到早走，現金少帶、包包放身前。",
+            transit: "AC Hotel Atocha 到 El Rastro：Metro L1 Atocha → Tirso de Molina，再步行約 8 分。"
+          },
+          {
+            time: "11:30",
+            zh: "主廣場／太陽門補遺",
+            en: "Plaza Mayor / Puerta del Sol",
+            address: "Plaza Mayor",
+            lat: 40.4155,
+            lng: -3.7074,
+            note: "若前一天已看過，可直接午餐或購物。"
+          },
+          {
+            time: "12:45",
+            zh: "午餐：Casa Revuelta 或 La Campana",
+            en: "Casa Revuelta / La Campana",
+            address: "Calle de Botoneras",
+            lat: 40.415,
+            lng: -3.7073,
+            note: "炸鱈魚球或炸花枝，簡單吃，不拖下午行程。"
+          },
+          {
+            time: "14:00-16:30",
+            zh: "馬德里觀光巴士／購物",
+            en: "Madrid sightseeing bus / shopping",
+            address: "Central Madrid loop",
+            lat: 40.419,
+            lng: -3.695,
+            note: "新版改成觀光巴士/購物；用巴士串太陽門、主廣場、王宮、Cibeles、麗池、普拉多外觀、Gran Vía、西班牙廣場與德波神殿。",
+            transit: "午餐到觀光巴士上車點：步行到 Plaza de España / Gran Vía 或 Museo del Prado 站點，依當日巴士路線選最近站。"
+          },
+          {
+            time: "18:30",
+            zh: "晚餐：文學區或 Atocha",
+            en: "Barrio de las Letras / Atocha dinner",
+            address: "Barrio de las Letras / Atocha",
+            lat: 40.4131,
+            lng: -3.6977,
+            note: "新版刪除普拉多與夜景，晚餐後回飯店休息。"
+          }
         ],
         alternatives: [
-          { zh: "晚餐備案：Casa Alberto", en: "Casa Alberto", lat: 40.4132, lng: -3.6984, note: "傳統小館，位置順。" },
-          { zh: "雨天備案：索菲亞王后藝術中心", en: "Museo Reina Sofia", lat: 40.4081, lng: -3.6940, note: "離 AC Hotel Atocha 很近。" }
+          {
+            zh: "晚餐備案：Casa Alberto",
+            en: "Casa Alberto",
+            lat: 40.4132,
+            lng: -3.6984,
+            note: "傳統小館，位置順。"
+          },
+          {
+            zh: "雨天備案：索菲亞王后藝術中心",
+            en: "Museo Reina Sofia",
+            lat: 40.4081,
+            lng: -3.694,
+            note: "離 AC Hotel Atocha 很近。"
+          }
         ]
       },
       {
@@ -1034,20 +1592,89 @@
         title: "托雷多上山看古城，傍晚回馬德里",
         budget: "約 EUR 75-135/人；含火車、城內交通、餐食與門票彈性",
         weather: "5/21 行前預報：6/1 馬德里/托雷多仍偏乾熱，約 20-30°C；托雷多坡多且反射熱強，上午觀景、午後進主教座堂或咖啡館。",
-        steps: "約 13,000-17,000 步；古城坡度高，計程車上觀景點很值得。",
-        safety: "托雷多白天安全但石板路滑；回馬德里後若疲累，普拉多免費時段直接取消。",
+        steps: "約 12,500-16,500 步；古城坡度高，計程車上觀景點很值得，已取消普拉多免費時段。",
+        safety: "托雷多白天安全但石板路滑；回馬德里後直接晚餐休息，不再硬排美術館。",
         route: [
-          { time: "10:15-10:49", zh: "馬德里到托雷多", en: "Madrid to Toledo train", address: "Madrid Atocha", lat: 40.4066, lng: -3.6892, note: "依表格火車時段；提早到站，別壓線。" },
-          { time: "11:15", zh: "山上看托雷多全景", en: "Mirador del Valle", address: "Carretera Circunvalacion", lat: 39.8548, lng: -4.0220, note: "到站後建議計程車上觀景台，省腿力且視野最好。" },
-          { time: "12:15", zh: "托雷多主教座堂", en: "Toledo Cathedral", address: "Calle Cardenal Cisneros 1", lat: 39.8578, lng: -4.0235, note: "古城核心，挑重點看。" },
-          { time: "13:45", zh: "午餐：La Abadía 或 Adolfo 周邊", en: "Toledo lunch", address: "Toledo old town", lat: 39.8587, lng: -4.0226, note: "選能坐下休息的餐廳，別只吃站食。" },
-          { time: "15:15", zh: "聖多美教堂／猶太區支線", en: "Iglesia de Santo Tome / Jewish Quarter", address: "Plaza del Conde", lat: 39.8565, lng: -4.0274, note: "看體力擇一，不把古城所有點塞完。" },
-          { time: "17:25-17:57", zh: "返回馬德里", en: "Back to Madrid", address: "Toledo Station to Atocha", lat: 39.8627, lng: -4.0113, note: "也可改 16:45-17:19，若天熱或疲累就早回。" },
-          { time: "18:00-20:00", zh: "普拉多免費時段（可選）", en: "Museo del Prado free hours", address: "Paseo del Prado", lat: 40.4138, lng: -3.6921, note: "只當備案，不和托雷多主線搶體力。" }
+          {
+            time: "10:15-10:49",
+            zh: "馬德里到托雷多",
+            en: "Madrid to Toledo train",
+            address: "Madrid Atocha",
+            lat: 40.4066,
+            lng: -3.6892,
+            note: "依表格火車時段；提早到站，別壓線。"
+          },
+          {
+            time: "11:15",
+            zh: "山上看托雷多全景",
+            en: "Mirador del Valle",
+            address: "Carretera Circunvalacion",
+            lat: 39.8548,
+            lng: -4.022,
+            note: "新版首選計程車到 Mirador del Valle，約 10 分鐘，省腿力且視野最好。"
+          },
+          {
+            time: "12:15",
+            zh: "托雷多主教座堂",
+            en: "Toledo Cathedral",
+            address: "Calle Cardenal Cisneros 1",
+            lat: 39.8578,
+            lng: -4.0235,
+            note: "古城核心，挑重點看。"
+          },
+          {
+            time: "13:45",
+            zh: "午餐：La Abadía 或 Adolfo 周邊",
+            en: "La Abadía / Adolfo area lunch",
+            address: "Toledo old town",
+            lat: 39.8587,
+            lng: -4.0226,
+            note: "新版指定午餐方向；選能坐下休息的餐廳。"
+          },
+          {
+            time: "15:15",
+            zh: "聖多美教堂與猶太區",
+            en: "Iglesia de Santo Tome / Jewish Quarter",
+            address: "Plaza del Conde",
+            lat: 39.8565,
+            lng: -4.0274,
+            note: "看體力擇一或短走，不把古城所有點塞完。"
+          },
+          {
+            time: "16:45-17:19",
+            zh: "返回馬德里",
+            en: "Back to Madrid",
+            address: "Toledo Station to Atocha",
+            lat: 39.8627,
+            lng: -4.0113,
+            note: "新版改 16:45-17:19 為首選；17:25-17:57 當備案。",
+            transit: "老城返回馬德里：從 Zocodover 搭 Bus 5/61 到 Toledo 車站，或計程車下山；再搭火車回 Atocha。"
+          },
+          {
+            time: "19:00",
+            zh: "晚餐：Madrid",
+            en: "Dinner in Madrid",
+            address: "Madrid",
+            lat: 40.4131,
+            lng: -3.6977,
+            note: "回馬德里後就近吃飯，不再排普拉多。"
+          }
         ],
         alternatives: [
-          { zh: "托雷多午餐備案：Bar Ludeña", en: "Bar Ludena", lat: 39.8580, lng: -4.0227, note: "在地小館，可吃 carcamusas。" },
-          { zh: "馬德里晚餐備案：飯店附近簡餐", en: "Atocha casual dinner", lat: 40.4037, lng: -3.6930, note: "一日遊後不要再跨城吃晚餐。" }
+          {
+            zh: "托雷多午餐備案：Bar Ludeña",
+            en: "Bar Ludena",
+            lat: 39.858,
+            lng: -4.0227,
+            note: "在地小館，可吃 carcamusas。"
+          },
+          {
+            zh: "馬德里晚餐備案：飯店附近簡餐",
+            en: "Atocha casual dinner",
+            lat: 40.4037,
+            lng: -3.693,
+            note: "一日遊後不要再跨城吃晚餐。"
+          }
         ]
       },
       {
@@ -1061,18 +1688,103 @@
         steps: "約 9,000-13,000 步；轉機日以市中心短線為主。",
         safety: "機場和波多市中心車站顧好行李；傍晚舊城區坡道慢走，不在暗巷停留。",
         route: [
-          { time: "07:30", zh: "出發至馬德里機場", en: "Transfer to Madrid Airport", address: "Adolfo Suárez Madrid-Barajas", lat: 40.4983, lng: -3.5676, note: "表格預算 EUR 30；從 AC Hotel Atocha 抓足時間。" },
-          { time: "10:35-10:50", zh: "馬德里飛波多", en: "Madrid to Porto / UX1145", address: "MAD to OPO", lat: 41.2421, lng: -8.6781, note: "座位 6A/6C；抵達後先去飯店放行李。" },
-          { time: "12:30", zh: "Mercure Porto Centro 放行李", en: "Mercure Porto Centro", address: "Praca da Batalha 116", lat: 41.1454, lng: -8.6077, note: "6/2-6/5 入住；位置適合步行老城。" },
-          { time: "13:15", zh: "午餐：波良市場", en: "Mercado do Bolhao", address: "Rua Formosa", lat: 41.1495, lng: -8.6079, note: "你表格的「波尼歐市集」我整理為波良市場。" },
-          { time: "14:15", zh: "Conga 豬扒堡", en: "Conga bifana", address: "Rua do Bonjardim 318", lat: 41.1461, lng: -8.6073, note: "若市場吃不飽，Conga 很順路。" },
-          { time: "15:00", zh: "阿瑪斯教堂與聖本篤車站", en: "Capela das Almas / Sao Bento", address: "Rua de Santa Catarina / Sao Bento", lat: 41.1499, lng: -8.6055, note: "藍白磁磚主題，沿 Santa Catarina 慢走即可。" },
-          { time: "16:30", zh: "下午茶：Majestic Café", en: "Cafe Majestic", address: "Rua de Santa Catarina 112", lat: 41.1473, lng: -8.6066, note: "觀光但有時代感；當作坐下休息。" },
-          { time: "20:00", zh: "晚餐：Restaurante Lameiras 外帶烤雞", en: "Restaurante Lameiras", address: "Porto center", lat: 41.1510, lng: -8.6100, note: "照你的表格：外帶烤雞，想補菜可加章魚或海鮮飯。" }
+          {
+            time: "08:00",
+            zh: "早餐：Bakery",
+            en: "Bakery breakfast",
+            address: "Atocha / Madrid",
+            lat: 40.4058,
+            lng: -3.69,
+            note: "新版加早餐；選飯店或車站附近麵包店即可。"
+          },
+          {
+            time: "07:30-08:30",
+            zh: "出發至馬德里機場",
+            en: "Transfer to Madrid Airport",
+            address: "Adolfo Suárez Madrid-Barajas",
+            lat: 40.4983,
+            lng: -3.5676,
+            note: "表格預算 EUR 30；從 AC Hotel Atocha 抓足時間。"
+          },
+          {
+            time: "10:35-10:50",
+            zh: "馬德里飛波多",
+            en: "Madrid to Porto / UX1145",
+            address: "MAD to OPO",
+            lat: 41.2421,
+            lng: -8.6781,
+            note: "座位 6A/6C；抵達後先去飯店放行李。"
+          },
+          {
+            time: "12:30",
+            zh: "Mercure Porto Centro 放行李",
+            en: "Mercure Porto Centro",
+            address: "Praça da Batalha 116",
+            lat: 41.1454,
+            lng: -8.6077,
+            note: "6/2-6/5 入住；位置適合步行老城。"
+          },
+          {
+            time: "13:15",
+            zh: "午餐：波良市場",
+            en: "Mercado do Bolhão",
+            address: "Rua Formosa",
+            lat: 41.1495,
+            lng: -8.6079,
+            note: "新版加營業時間 08:00-20:00；先吃市集食物，輕鬆開始波多。"
+          },
+          {
+            time: "14:15",
+            zh: "Conga 豬扒堡",
+            en: "Conga bifana",
+            address: "Rua do Bonjardim 318",
+            lat: 41.1461,
+            lng: -8.6073,
+            note: "若市場吃不飽，Conga 很順路。"
+          },
+          {
+            time: "15:00",
+            zh: "阿瑪斯教堂與聖本篤車站",
+            en: "Capela das Almas / São Bento",
+            address: "Rua de Santa Catarina / São Bento",
+            lat: 41.1499,
+            lng: -8.6055,
+            note: "藍白磁磚主題，沿 Santa Catarina 慢走即可。"
+          },
+          {
+            time: "16:30",
+            zh: "下午茶：Majestic Café",
+            en: "Café Majestic",
+            address: "Rua de Santa Catarina 112",
+            lat: 41.1473,
+            lng: -8.6066,
+            note: "觀光但有時代感；當作坐下休息。"
+          },
+          {
+            time: "20:00",
+            zh: "晚餐：Restaurante Lameiras 外帶烤雞／市集食物",
+            en: "Restaurante Lameiras / market food",
+            address: "Porto center",
+            lat: 41.151,
+            lng: -8.61,
+            note: "新版加入市集食物備案；想補菜可加章魚或海鮮飯。"
+          }
         ],
         alternatives: [
-          { zh: "備案晚餐：Casa Guedes", en: "Casa Guedes Tradicional", lat: 41.1467, lng: -8.6052, note: "若外帶烤雞不順，改豬肉三明治。" },
-          { zh: "備案下午茶：Manteigaria", en: "Manteigaria Porto", lat: 41.1477, lng: -8.6067, note: "葡式蛋塔快速補糖。" }
+          {
+            zh: "備案晚餐：Casa Guedes",
+            en: "Casa Guedes Tradicional",
+            lat: 41.1467,
+            lng: -8.6052,
+            note: "若外帶烤雞不順，改豬肉三明治。"
+          },
+          {
+            zh: "備案下午茶：Manteigaria",
+            en: "Manteigaria Porto",
+            lat: 41.1477,
+            lng: -8.6067,
+            note: "葡式蛋塔快速補糖。"
+          }
         ]
       },
       {
@@ -1086,17 +1798,103 @@
         steps: "主線約 12,000-15,500 步；全支線可接近 18,000 步。",
         safety: "波多坡道與石板路是最大風險；夕陽後從 Gaia 或河岸搭車回。",
         route: [
-          { time: "09:30", zh: "Serralves 美術館", en: "Serralves Museum", address: "Rua Dom Joao de Castro 210", lat: 41.1598, lng: -8.6599, note: "你表格指定點。搭 Uber/Bolt 或公車，別用步行硬接市中心。" },
-          { time: "12:30", zh: "午餐：Epoca 或 Eatery 119", en: "Epoca / Eatery 119", address: "Porto center", lat: 41.1510, lng: -8.6150, note: "從 Serralves 回市中心後吃，選能坐下休息的店。" },
-          { time: "14:00", zh: "卡爾莫教堂與隱藏屋", en: "Igreja do Carmo / Hidden House", address: "Rua do Carmo", lat: 41.1473, lng: -8.6160, note: "藍白磁磚外觀＋窄屋，短停留即可。" },
-          { time: "15:00", zh: "水晶宮花園", en: "Jardins do Palacio de Cristal", address: "Rua de Dom Manuel II", lat: 41.1483, lng: -8.6252, note: "城市與杜羅河視野，安排坐下休息。" },
-          { time: "16:30", zh: "克萊瑞科教堂登高（可選）", en: "Igreja dos Clerigos / Tower", address: "Rua de Sao Filipe de Nery", lat: 41.1457, lng: -8.6146, note: "若腿力好再爬塔；不爬也不影響整天。" },
-          { time: "17:30", zh: "主教座堂與里貝拉", en: "Porto Cathedral / Ribeira", address: "Terreiro da Se / Cais da Ribeira", lat: 41.1429, lng: -8.6110, note: "順坡下到河岸，注意石板。" },
-          { time: "18:30", zh: "路易一世大橋＋纜車／酒莊", en: "Dom Luis I Bridge / Gaia cellars", address: "Ponte de Dom Luis I", lat: 41.1400, lng: -8.6095, note: "Sandeman/CALEM/Soares 三選一；夕陽後搭車回。" }
+          {
+            time: "09:00",
+            zh: "早餐",
+            en: "Breakfast",
+            address: "Porto center",
+            lat: 41.1454,
+            lng: -8.6077,
+            note: "新版加入早餐空檔；先吃再去 Serralves。"
+          },
+          {
+            time: "09:45",
+            zh: "Serralves 美術館",
+            en: "Serralves Museum",
+            address: "Rua Dom João de Castro 210",
+            lat: 41.1598,
+            lng: -8.6599,
+            note: "你表格指定點。搭 Uber/Bolt 或公車，別用步行硬接市中心。"
+          },
+          {
+            time: "12:30",
+            zh: "午餐",
+            en: "Lunch",
+            address: "Porto center",
+            lat: 41.151,
+            lng: -8.615,
+            note: "新版保留彈性午餐；可接 Epoca、Eatery 119 或回市中心簡餐。"
+          },
+          {
+            time: "14:00",
+            zh: "卡爾莫教堂與隱藏屋",
+            en: "Igreja do Carmo / Hidden House",
+            address: "Rua do Carmo",
+            lat: 41.1473,
+            lng: -8.616,
+            note: "藍白磁磚外觀＋窄屋，短停留即可。"
+          },
+          {
+            time: "15:00",
+            zh: "水晶宮花園",
+            en: "Jardins do Palácio de Cristal",
+            address: "Rua de Dom Manuel II",
+            lat: 41.1483,
+            lng: -8.6252,
+            note: "城市與杜羅河視野，安排坐下休息。"
+          },
+          {
+            time: "16:30",
+            zh: "克萊瑞科教堂登高（可選）",
+            en: "Igreja dos Clérigos / Tower",
+            address: "Rua de São Filipe de Nery",
+            lat: 41.1457,
+            lng: -8.6146,
+            note: "若腿力好再爬塔；不爬也不影響整天。"
+          },
+          {
+            time: "17:30",
+            zh: "主教座堂與里貝拉",
+            en: "Porto Cathedral / Ribeira",
+            address: "Terreiro da Sé / Cais da Ribeira",
+            lat: 41.1429,
+            lng: -8.611,
+            note: "順坡下到河岸，注意石板。"
+          },
+          {
+            time: "18:30",
+            zh: "路易一世大橋＋纜車／酒莊",
+            en: "Dom Luís I Bridge / Gaia cellars",
+            address: "Ponte de Dom Luís I",
+            lat: 41.14,
+            lng: -8.6095,
+            note: "Sandeman/CALEM/Soares 三選一；夕陽後搭車回。"
+          },
+          {
+            time: "20:30",
+            zh: "晚餐",
+            en: "Dinner",
+            address: "Porto center",
+            lat: 41.1454,
+            lng: -8.6077,
+            note: "新版保留彈性晚餐；視下午支線停在哪裡決定。"
+          }
         ],
         alternatives: [
-          { zh: "晚餐備案：Adega São Nicolau", en: "Adega Sao Nicolau", lat: 41.1413, lng: -8.6152, note: "河岸傳統菜，需訂位。" },
-          { zh: "雨天備案：Palácio da Bolsa", en: "Palacio da Bolsa", lat: 41.1419, lng: -8.6155, note: "室內導覽，適合替代塔和花園。" }
+          {
+            zh: "晚餐備案：Adega São Nicolau",
+            en: "Adega Sao Nicolau",
+            lat: 41.1413,
+            lng: -8.6152,
+            note: "河岸傳統菜，需訂位。"
+          },
+          {
+            zh: "雨天備案：Palácio da Bolsa",
+            en: "Palacio da Bolsa",
+            lat: 41.1419,
+            lng: -8.6155,
+            note: "室內導覽，適合替代塔和花園。"
+          }
         ]
       },
       {
@@ -1110,18 +1908,94 @@
         steps: "約 13,000-17,500 步；你確認 6/4 續住波多，傍晚不提早去里斯本。",
         safety: "萊羅書店與老城熱門點手機收好；酒莊後若喝酒，直接搭車回 Mercure。",
         route: [
-          { time: "09:00-10:00", zh: "萊羅書店", en: "Livraria Lello", address: "Rua das Carmelitas 144", lat: 41.1469, lng: -8.6148, note: "已預約。早場拍照後快閃，不要被人潮消耗太久。" },
-          { time: "10:00", zh: "早餐：Mercure／Epoca／Eatery 119", en: "Breakfast candidates", address: "Porto center", lat: 41.1495, lng: -8.6120, note: "依排隊狀況決定，先坐下補咖啡。" },
-          { time: "11:15", zh: "卡爾莫教堂與克萊瑞科", en: "Carmo / Clerigos", address: "Rua do Carmo", lat: 41.1473, lng: -8.6160, note: "若 6/3 已完成，就改購物或咖啡。" },
-          { time: "12:45", zh: "午餐：Taberna Santo António", en: "Taberna Santo Antonio", address: "Rua das Virtudes 32", lat: 41.1437, lng: -8.6186, note: "在地小館，座位少；客滿改 O Buraco。" },
-          { time: "14:30", zh: "交易宮", en: "Palacio da Bolsa", address: "Rua de Ferreira Borges", lat: 41.1419, lng: -8.6155, note: "你表格列入候選，建議今天補上，選導覽時段。" },
-          { time: "16:00", zh: "里貝拉河岸", en: "Ribeira", address: "Cais da Ribeira", lat: 41.1406, lng: -8.6129, note: "河岸散步不要久站在擁擠餐廳入口。" },
-          { time: "17:30-19:30", zh: "蓋亞酒莊與鐵橋夕陽", en: "Gaia cellars / Dom Luis I sunset", address: "Vila Nova de Gaia", lat: 41.1377, lng: -8.6096, note: "Sandeman/CALEM/Soares 三選一；天黑後搭車回。" },
-          { time: "20:30", zh: "晚餐：O Buraco／Casa Viúva", en: "O Buraco / Casa Viuva", address: "Porto", lat: 41.1514, lng: -8.6072, note: "續住波多，晚餐可選街坊菜，不趕車。" }
+          {
+            time: "09:00-10:00",
+            zh: "萊羅書店",
+            en: "Livraria Lello",
+            address: "Rua das Carmelitas 144",
+            lat: 41.1469,
+            lng: -8.6148,
+            note: "已預約。早場拍照後快閃，不要被人潮消耗太久。"
+          },
+          {
+            time: "10:00",
+            zh: "早餐：Mercure／Epoca／Eatery 119",
+            en: "Breakfast candidates",
+            address: "Porto center",
+            lat: 41.1495,
+            lng: -8.612,
+            note: "依排隊狀況決定，先坐下補咖啡。"
+          },
+          {
+            time: "11:15",
+            zh: "卡爾莫教堂與克萊瑞科",
+            en: "Carmo / Clerigos",
+            address: "Rua do Carmo",
+            lat: 41.1473,
+            lng: -8.616,
+            note: "若 6/3 已完成，就改購物或咖啡。"
+          },
+          {
+            time: "12:45",
+            zh: "午餐：Taberna Santo António",
+            en: "Taberna Santo Antonio",
+            address: "Rua das Virtudes 32",
+            lat: 41.1437,
+            lng: -8.6186,
+            note: "新版午餐候選：Taberna Santo António、O Buraco 或 Casa Viúva；座位少，客滿就換下一間。"
+          },
+          {
+            time: "14:30",
+            zh: "交易宮",
+            en: "Palacio da Bolsa",
+            address: "Rua de Ferreira Borges",
+            lat: 41.1419,
+            lng: -8.6155,
+            note: "你表格列入候選，建議今天補上，選導覽時段。"
+          },
+          {
+            time: "16:00",
+            zh: "里貝拉河岸",
+            en: "Ribeira",
+            address: "Cais da Ribeira",
+            lat: 41.1406,
+            lng: -8.6129,
+            note: "河岸散步不要久站在擁擠餐廳入口。"
+          },
+          {
+            time: "17:30-19:30",
+            zh: "蓋亞酒莊與鐵橋夕陽",
+            en: "Gaia cellars / Dom Luis I sunset",
+            address: "Vila Nova de Gaia",
+            lat: 41.1377,
+            lng: -8.6096,
+            note: "Sandeman/CALEM/Soares 三選一；天黑後搭車回。"
+          },
+          {
+            time: "20:30",
+            zh: "晚餐：O Buraco／Casa Viúva",
+            en: "O Buraco / Casa Viuva",
+            address: "Porto",
+            lat: 41.1514,
+            lng: -8.6072,
+            note: "續住波多，晚餐可選街坊菜，不趕車。"
+          }
         ],
         alternatives: [
-          { zh: "備案午餐：O Buraco", en: "O Buraco", lat: 41.1514, lng: -8.6072, note: "傳統菜份量足。" },
-          { zh: "雨天備案：攝影中心", en: "Portuguese Centre of Photography", lat: 41.1447, lng: -8.6165, note: "離萊羅書店近。" }
+          {
+            zh: "備案午餐：O Buraco",
+            en: "O Buraco",
+            lat: 41.1514,
+            lng: -8.6072,
+            note: "傳統菜份量足。"
+          },
+          {
+            zh: "雨天備案：攝影中心",
+            en: "Portuguese Centre of Photography",
+            lat: 41.1447,
+            lng: -8.6165,
+            note: "離萊羅書店近。"
+          }
         ]
       },
       {
@@ -1135,17 +2009,85 @@
         steps: "約 12,000-16,000 步；抵達後不拖行李去貝倫，先放飯店。",
         safety: "里斯本 15E 電車與 Time Out Market 人多，包包放前面；晚餐後搭車回 Ibis。",
         route: [
-          { time: "09:30-12:30", zh: "波多到里斯本", en: "Porto to Lisboa train", address: "Porto Campanha to Lisboa", lat: 41.1505, lng: -8.5854, note: "已預約；到站後先放行李。" },
-          { time: "13:30", zh: "Ibis Lisboa 放行李", en: "Ibis Lisboa", address: "Lisbon center", lat: 38.7274, lng: -9.1468, note: "6/5-6/8 入住，大房陽台城市景。" },
-          { time: "15:30-17:30", zh: "熱羅尼莫斯修道院", en: "Jeronimos Monastery", address: "Praca do Imperio", lat: 38.6979, lng: -9.2065, note: "抵達日午後入內，若隊伍太長就改外觀與教堂。" },
-          { time: "17:45", zh: "貝倫蛋塔老店", en: "Pasteis de Belem", address: "Rua de Belem 84-92", lat: 38.6975, lng: -9.2032, note: "表格註記營業到約 20:00；內用通常比想像快。" },
-          { time: "18:30", zh: "貝倫塔", en: "Belem Tower", address: "Av. Brasilia", lat: 38.6916, lng: -9.2160, note: "外觀與河岸即可；入內不一定值得排。" },
-          { time: "20:00", zh: "晚餐：Time Out Market", en: "Time Out Market Lisboa", address: "Av. 24 de Julho", lat: 38.7068, lng: -9.1457, note: "搭 15E 或計程車回市區；市場人多但交通方便。" },
-          { time: "21:15", zh: "日落／河岸散步", en: "Cais do Sodre riverside", address: "Cais do Sodre", lat: 38.7060, lng: -9.1452, note: "看天色與體力；晚了就直接回飯店。" }
+          {
+            time: "09:30-12:30",
+            zh: "波多到里斯本",
+            en: "Porto to Lisboa train",
+            address: "Porto Campanhã to Lisboa",
+            lat: 41.1505,
+            lng: -8.5854,
+            note: "已預約；到站後先放行李。"
+          },
+          {
+            time: "13:30",
+            zh: "Ibis Lisboa 放行李",
+            en: "Ibis Lisboa",
+            address: "Lisbon center",
+            lat: 38.7274,
+            lng: -9.1468,
+            note: "新版註記 Taxi；6/5-6/8 入住，大房陽台城市景。"
+          },
+          {
+            time: "14:15",
+            zh: "午餐",
+            en: "Lunch",
+            address: "Lisbon",
+            lat: 38.7274,
+            lng: -9.1468,
+            note: "新版保留彈性午餐；放完行李後在飯店或前往貝倫路上簡單吃。"
+          },
+          {
+            time: "15:30-17:30",
+            zh: "熱羅尼莫斯修道院",
+            en: "Jeronimos Monastery",
+            address: "Praça do Império",
+            lat: 38.6979,
+            lng: -9.2065,
+            note: "抵達日午後入內，若隊伍太長就改外觀與教堂。"
+          },
+          {
+            time: "17:45",
+            zh: "貝倫蛋塔老店 Pastéis de Belém",
+            en: "Pastéis de Belém",
+            address: "Rua de Belém 84-92",
+            lat: 38.6975,
+            lng: -9.2032,
+            note: "表格註記營業到約 20:00；從這裡到貝倫塔沿河步行約 15-18 分，日曬強可搭短程計程車。"
+          },
+          {
+            time: "18:30",
+            zh: "貝倫塔",
+            en: "Belém Tower",
+            address: "Av. Brasília",
+            lat: 38.6916,
+            lng: -9.216,
+            note: "外觀與河岸即可；入內不一定值得排。"
+          },
+          {
+            time: "20:00",
+            zh: "晚餐：Time Out Market",
+            en: "Time Out Market Lisboa",
+            address: "Av. 24 de Julho",
+            lat: 38.7068,
+            lng: -9.1457,
+            note: "搭 15E 或計程車回市區；市場人多但交通方便。"
+          }
         ],
         alternatives: [
-          { zh: "晚餐備案：Manteigaria + 簡餐", en: "Manteigaria / casual dinner", lat: 38.7101, lng: -9.1437, note: "Time Out 太擠時。" },
-          { zh: "貝倫備案：MAAT 河岸", en: "MAAT riverside", lat: 38.6957, lng: -9.1947, note: "修道院隊伍太長時改戶外建築與河岸。" }
+          {
+            zh: "晚餐備案：Manteigaria + 簡餐",
+            en: "Manteigaria / casual dinner",
+            lat: 38.7101,
+            lng: -9.1437,
+            note: "Time Out 太擠時。"
+          },
+          {
+            zh: "貝倫備案：MAAT 河岸",
+            en: "MAAT riverside",
+            lat: 38.6957,
+            lng: -9.1947,
+            note: "修道院隊伍太長時改戶外建築與河岸。"
+          }
         ]
       },
       {
@@ -1159,21 +2101,121 @@
         steps: "主線約 14,000-17,500 步；加三條升降電車拍攝可達 18,000 步。",
         safety: "28 號電車與觀景台扒手多；Fado 後用 Bolt/Uber 或走主街回。",
         route: [
-          { time: "07:30", zh: "28 號電車", en: "Tram 28", address: "Martim Moniz / Alfama route", lat: 38.7167, lng: -9.1364, note: "越早越好；只搭一段體驗，不用全線硬坐。" },
-          { time: "08:30", zh: "聖露西亞觀景台", en: "Miradouro de Santa Luzia", address: "Largo de Santa Luzia", lat: 38.7118, lng: -9.1300, note: "早晨光線舒服，停留拍照 20 分鐘。" },
-          { time: "09:00", zh: "早餐：Break Sé", en: "Break Se", address: "Alfama / Se", lat: 38.7109, lng: -9.1324, note: "你表格指定早餐候選；若排隊，找附近咖啡。" },
-          { time: "10:00", zh: "里斯本主教座堂與聖安東尼教堂", en: "Lisbon Cathedral / Santo Antonio", address: "Largo da Se", lat: 38.7101, lng: -9.1333, note: "由觀景台順下坡，很省力。" },
-          { time: "11:00", zh: "奧古斯塔拱門與商業廣場", en: "Rua Augusta Arch / Praca do Comercio", address: "Rua Augusta", lat: 38.7080, lng: -9.1366, note: "下城主線，開闊好走。" },
-          { time: "12:15", zh: "Rossio 廣場與孔瑟桑街", en: "Rossio / Baixa", address: "Praca Dom Pedro IV", lat: 38.7139, lng: -9.1394, note: "中午轉到餐廳，別在廣場久站。" },
-          { time: "13:00", zh: "午餐：Em Alta Na Baixa／Ocastico／Bonjardim", en: "Lunch candidates", address: "Baixa", lat: 38.7139, lng: -9.1394, note: "Bonjardim 烤雞最穩；想坐好一點選 Em Alta Na Baixa。" },
-          { time: "14:30", zh: "回飯店休息", en: "Ibis Lisboa", address: "Lisbon center", lat: 38.7274, lng: -9.1468, note: "下午老城前一定休息。" },
-          { time: "16:00", zh: "升降電車拍攝支線", en: "Gloria / Bica / Lavra funiculars", address: "Lisbon funiculars", lat: 38.7150, lng: -9.1444, note: "榮耀、比卡、修道院電車三選一或二，不必全跑。" },
-          { time: "18:00", zh: "聖若熱城堡與老城夕陽", en: "Castelo de Sao Jorge / old town sunset", address: "Rua de Santa Cruz do Castelo", lat: 38.7139, lng: -9.1335, note: "若不想爬坡，用嘟嘟車或短程車；夕陽後往餐廳移動。" },
-          { time: "20:30", zh: "晚餐：老城區 Fado", en: "Fado dinner in Alfama", address: "Alfama", lat: 38.7114, lng: -9.1286, note: "選有評價的 Fado casa，訂位並確認最低消費。" }
+          {
+            time: "07:30",
+            zh: "28 號電車",
+            en: "Tram 28",
+            address: "Martim Moniz / Alfama route",
+            lat: 38.7167,
+            lng: -9.1364,
+            note: "新版指定 Martim Moniz 上車，Largo das Portas do Sol / Santa Luzia 下車；越早越好，只搭一段體驗，不用全線硬坐。"
+          },
+          {
+            time: "08:30",
+            zh: "聖露西亞觀景台",
+            en: "Miradouro de Santa Luzia",
+            address: "Largo de Santa Luzia",
+            lat: 38.7118,
+            lng: -9.13,
+            note: "早晨光線舒服，停留拍照 20 分鐘。"
+          },
+          {
+            time: "09:00",
+            zh: "早餐：Break Sé",
+            en: "Break Se",
+            address: "Alfama / Se",
+            lat: 38.7109,
+            lng: -9.1324,
+            note: "你表格指定早餐候選；若排隊，找附近咖啡。"
+          },
+          {
+            time: "10:00",
+            zh: "里斯本主教座堂與聖安東尼教堂",
+            en: "Lisbon Cathedral / Santo Antonio",
+            address: "Largo da Se",
+            lat: 38.7101,
+            lng: -9.1333,
+            note: "由觀景台順下坡，很省力。"
+          },
+          {
+            time: "11:00",
+            zh: "奧古斯塔拱門與商業廣場",
+            en: "Rua Augusta Arch / Praca do Comercio",
+            address: "Rua Augusta",
+            lat: 38.708,
+            lng: -9.1366,
+            note: "下城主線，開闊好走。"
+          },
+          {
+            time: "12:15",
+            zh: "Rossio 廣場與孔瑟桑街",
+            en: "Rossio / Baixa",
+            address: "Praca Dom Pedro IV",
+            lat: 38.7139,
+            lng: -9.1394,
+            note: "中午轉到餐廳，別在廣場久站。"
+          },
+          {
+            time: "13:00",
+            zh: "午餐：Em Alta Na Baixa／Ocastico／Bonjardim",
+            en: "Lunch candidates",
+            address: "Baixa",
+            lat: 38.7139,
+            lng: -9.1394,
+            note: "Bonjardim 烤雞最穩；想坐好一點選 Em Alta Na Baixa。"
+          },
+          {
+            time: "14:30",
+            zh: "回飯店休息",
+            en: "Ibis Lisboa",
+            address: "Lisbon center",
+            lat: 38.7274,
+            lng: -9.1468,
+            note: "下午老城前一定休息。"
+          },
+          {
+            time: "16:00",
+            zh: "升降電車拍攝支線",
+            en: "Gloria / Bica / Lavra funiculars",
+            address: "Lisbon funiculars",
+            lat: 38.715,
+            lng: -9.1444,
+            note: "榮耀、比卡、修道院電車三選一或二，不必全跑。"
+          },
+          {
+            time: "18:00",
+            zh: "聖若熱城堡與老城夕陽",
+            en: "Castelo de Sao Jorge / old town sunset",
+            address: "Rua de Santa Cruz do Castelo",
+            lat: 38.7139,
+            lng: -9.1335,
+            note: "若不想爬坡，用嘟嘟車或短程車；夕陽後往餐廳移動。"
+          },
+          {
+            time: "20:30",
+            zh: "晚餐：老城區 Fado",
+            en: "Fado dinner in Alfama",
+            address: "Alfama",
+            lat: 38.7114,
+            lng: -9.1286,
+            note: "選有評價的 Fado casa，訂位並確認最低消費。"
+          }
         ],
         alternatives: [
-          { zh: "Fado 備案：Clube de Fado", en: "Clube de Fado", lat: 38.7104, lng: -9.1315, note: "靠近主教座堂，需訂位。" },
-          { zh: "晚餐備案：Bonjardim", en: "Bonjardim", lat: 38.7159, lng: -9.1411, note: "若不聽 Fado，就吃烤雞早點休息。" }
+          {
+            zh: "Fado 備案：Clube de Fado",
+            en: "Clube de Fado",
+            lat: 38.7104,
+            lng: -9.1315,
+            note: "靠近主教座堂，需訂位。"
+          },
+          {
+            zh: "晚餐備案：Bonjardim",
+            en: "Bonjardim",
+            lat: 38.7159,
+            lng: -9.1411,
+            note: "若不聽 Fado，就吃烤雞早點休息。"
+          }
         ]
       },
       {
@@ -1187,17 +2229,85 @@
         steps: "約 14,000-18,000 步；佩納宮坡度高，體力不足就刪一個宮殿。",
         safety: "週日人潮多，車站排隊和巴士轉乘看好包包；羅卡角懸崖不要越線拍照。",
         route: [
-          { time: "08:00", zh: "Rossio 車站出發", en: "Rossio Station to Sintra", address: "Rossio Station", lat: 38.7140, lng: -9.1407, note: "早出發避開週日人潮；先買好票或用交通卡。" },
-          { time: "09:00", zh: "辛特拉車站", en: "Sintra Station", address: "Sintra", lat: 38.7992, lng: -9.3860, note: "到站後搭 434 或預約車上山，不建議步行上山。" },
-          { time: "09:45", zh: "佩納宮", en: "Pena Palace", address: "Estrada da Pena", lat: 38.7876, lng: -9.3906, note: "若只有一個重點就選這裡；請預約早場。" },
-          { time: "12:30", zh: "辛特拉老城午餐", en: "Sintra old town lunch", address: "Centro Historico de Sintra", lat: 38.7960, lng: -9.3900, note: "找能坐下的葡萄牙小館；避開只賣觀光套餐的店。" },
-          { time: "14:00", zh: "雷加萊拉莊園（可選）", en: "Quinta da Regaleira", address: "R. Barbosa du Bocage 5", lat: 38.7967, lng: -9.3969, note: "若佩納宮已走很多，這裡改外觀或取消。" },
-          { time: "16:00", zh: "羅卡角", en: "Cabo da Roca", address: "Estrada do Cabo da Roca", lat: 38.7804, lng: -9.4989, note: "風強，停留 30-45 分鐘即可；看好回程車次。" },
-          { time: "19:00", zh: "返回里斯本", en: "Back to Lisbon", address: "Lisbon", lat: 38.7140, lng: -9.1407, note: "可走 Cascais 線回或原路回，依交通等待時間決定。" }
+          {
+            time: "08:00",
+            zh: "Rossio 車站出發",
+            en: "Rossio Station to Sintra",
+            address: "Rossio Station",
+            lat: 38.714,
+            lng: -9.1407,
+            note: "早出發避開週日人潮；先買好票或用交通卡。"
+          },
+          {
+            time: "09:00",
+            zh: "辛特拉車站",
+            en: "Sintra Station",
+            address: "Sintra",
+            lat: 38.7992,
+            lng: -9.386,
+            note: "到站後搭 434 或預約車上山，不建議步行上山。"
+          },
+          {
+            time: "09:45",
+            zh: "佩納宮",
+            en: "Pena Palace",
+            address: "Estrada da Pena",
+            lat: 38.7876,
+            lng: -9.3906,
+            note: "若只有一個重點就選這裡；請預約早場。"
+          },
+          {
+            time: "12:30",
+            zh: "辛特拉老城午餐",
+            en: "Sintra old town lunch",
+            address: "Centro Historico de Sintra",
+            lat: 38.796,
+            lng: -9.39,
+            note: "找能坐下的葡萄牙小館；避開只賣觀光套餐的店。"
+          },
+          {
+            time: "14:00",
+            zh: "雷加萊拉莊園（可選）",
+            en: "Quinta da Regaleira",
+            address: "R. Barbosa du Bocage 5",
+            lat: 38.7967,
+            lng: -9.3969,
+            note: "若佩納宮已走很多，這裡改外觀或取消。"
+          },
+          {
+            time: "16:00",
+            zh: "羅卡角",
+            en: "Cabo da Roca",
+            address: "Estrada do Cabo da Roca",
+            lat: 38.7804,
+            lng: -9.4989,
+            note: "風強，停留 30-45 分鐘即可；看好回程車次。"
+          },
+          {
+            time: "19:00",
+            zh: "返回里斯本",
+            en: "Back to Lisbon",
+            address: "Lisbon",
+            lat: 38.714,
+            lng: -9.1407,
+            note: "可走 Cascais 線回或原路回，依交通等待時間決定。"
+          }
         ],
         alternatives: [
-          { zh: "午餐備案：Tascantiga", en: "Tascantiga", lat: 38.7956, lng: -9.3905, note: "辛特拉老城方便。" },
-          { zh: "雨霧備案：蒙塞拉特宮", en: "Monserrate Palace", lat: 38.7928, lng: -9.4196, note: "若佩納宮霧太大，改較低海拔景點。" }
+          {
+            zh: "午餐備案：Tascantiga",
+            en: "Tascantiga",
+            lat: 38.7956,
+            lng: -9.3905,
+            note: "辛特拉老城方便。"
+          },
+          {
+            zh: "雨霧備案：蒙塞拉特宮",
+            en: "Monserrate Palace",
+            lat: 38.7928,
+            lng: -9.4196,
+            note: "若佩納宮霧太大，改較低海拔景點。"
+          }
         ]
       },
       {
@@ -1211,17 +2321,85 @@
         steps: "約 8,000-12,500 步；保留行李整理和機場緩衝。",
         safety: "升降梯、希亞多和自由大道人多，拍照時手機拿穩；機場交通提早出發。",
         route: [
-          { time: "09:30", zh: "巴西人咖啡館", en: "A Brasileira", address: "Rua Garrett 120", lat: 38.7107, lng: -9.1427, note: "你表格早餐點；當作里斯本最後早晨。" },
-          { time: "10:15", zh: "費雷拉之家／希亞多採買", en: "Casa Ferreira / Chiado shopping", address: "Chiado", lat: 38.7110, lng: -9.1430, note: "以輕購物為主，別買太重。" },
-          { time: "11:30", zh: "聖多祿花園", en: "Miradouro de Sao Pedro de Alcantara", address: "Rua de Sao Pedro de Alcantara", lat: 38.7150, lng: -9.1444, note: "視野好，走主街上去或搭榮耀電車。" },
-          { time: "12:30", zh: "自由大道", en: "Avenida da Liberdade", address: "Avenida da Liberdade", lat: 38.7202, lng: -9.1456, note: "最後購物與午餐，靠近飯店/交通。" },
-          { time: "13:30", zh: "前往里斯本機場", en: "To Lisbon Airport", address: "Humberto Delgado Airport", lat: 38.7742, lng: -9.1342, note: "表格 13:30 出發；抓寬一點。" },
-          { time: "16:30-19:20", zh: "里斯本飛巴塞隆納", en: "Lisboa to Barcelona", address: "LIS to BCN", lat: 41.2871, lng: 2.0725, note: "抵達後直接住機場飯店，避免進市區。" },
-          { time: "20:30", zh: "Barcelona Airport Hotel", en: "BAH Barcelona Airport Hotel", address: "Plaza Volateria 3", lat: 41.3196, lng: 2.0745, note: "6/8 晚入住，為 6/10 早班機和 6/9 購物日保留彈性。" }
+          {
+            time: "09:30",
+            zh: "巴西人 café",
+            en: "A Brasileira",
+            address: "Rua Garrett 120",
+            lat: 38.7107,
+            lng: -9.1427,
+            note: "你表格早餐點；當作里斯本最後早晨。"
+          },
+          {
+            time: "10:15",
+            zh: "費雷拉之家／Chiado shopping",
+            en: "Casa Ferreira / Chiado shopping",
+            address: "Chiado",
+            lat: 38.711,
+            lng: -9.143,
+            note: "以輕購物為主，別買太重。"
+          },
+          {
+            time: "11:30",
+            zh: "聖多祿花園",
+            en: "Miradouro de Sao Pedro de Alcantara",
+            address: "Rua de Sao Pedro de Alcantara",
+            lat: 38.715,
+            lng: -9.1444,
+            note: "視野好，走主街上去或搭榮耀電車。"
+          },
+          {
+            time: "12:30",
+            zh: "自由大道",
+            en: "Avenida da Liberdade",
+            address: "Avenida da Liberdade",
+            lat: 38.7202,
+            lng: -9.1456,
+            note: "最後購物與午餐，靠近飯店/交通。"
+          },
+          {
+            time: "13:30",
+            zh: "前往里斯本機場",
+            en: "To Lisbon Airport",
+            address: "Humberto Delgado Airport",
+            lat: 38.7742,
+            lng: -9.1342,
+            note: "表格 13:30 出發；抓寬一點。"
+          },
+          {
+            time: "16:30-19:20",
+            zh: "里斯本飛巴塞隆納",
+            en: "Lisboa to Barcelona",
+            address: "LIS to BCN",
+            lat: 41.2871,
+            lng: 2.0725,
+            note: "抵達後直接住機場飯店，避免進市區。"
+          },
+          {
+            time: "20:30",
+            zh: "Barcelona Airport Hotel",
+            en: "BAH Barcelona Airport Hotel",
+            address: "Plaza Volateria 3",
+            lat: 41.3196,
+            lng: 2.0745,
+            note: "6/8 晚入住，為 6/10 早班機和 6/9 購物日保留彈性。"
+          }
         ],
         alternatives: [
-          { zh: "午餐備案：Time Out Market", en: "Time Out Market", lat: 38.7068, lng: -9.1457, note: "如果希亞多採買很快，去 Cais do Sodre 用餐。" },
-          { zh: "雨天備案：Armazens do Chiado", en: "Armazens do Chiado", lat: 38.7108, lng: -9.1398, note: "室內採買與咖啡。" }
+          {
+            zh: "午餐備案：Time Out Market",
+            en: "Time Out Market",
+            lat: 38.7068,
+            lng: -9.1457,
+            note: "如果希亞多採買很快，去 Cais do Sodre 用餐。"
+          },
+          {
+            zh: "雨天備案：Armazens do Chiado",
+            en: "Armazens do Chiado",
+            lat: 38.7108,
+            lng: -9.1398,
+            note: "室內採買與咖啡。"
+          }
         ]
       },
       {
@@ -1232,28 +2410,130 @@
         title: "回到巴塞隆納的購物與補遺日",
         budget: "約 EUR 80-160/人；購物另計",
         weather: "5/21 行前趨勢：6/9 巴塞隆納距離較遠，先以早夏 20-26°C、可能短暫陣雨看待；購物日把戶外放早晚，中午用市場/商場避暑。",
-        steps: "約 13,000-17,500 步；若購物多，焦糖山日落改取消。",
+        steps: "約 11,500-15,500 步；已刪除焦糖山，把重點放在購物、蘭布拉與 Barceloneta。",
         safety: "蘭布拉大道、波蓋利亞市場、皇家廣場和海邊都是扒手熱點；購物袋不要離手。",
         route: [
-          { time: "09:30", zh: "機場飯店出發進市區", en: "BAH to Barcelona city", address: "Barcelona Airport Hotel", lat: 41.3196, lng: 2.0745, note: "行李可留飯店；帶輕便包進城購物。" },
-          { time: "10:30", zh: "恩典大道／加泰隆尼亞廣場購物", en: "Passeig de Gracia / Placa Catalunya shopping", address: "Passeig de Gracia", lat: 41.3900, lng: 2.1650, note: "主要購物段，品牌、百貨與退稅品集中。" },
-          { time: "12:30", zh: "午餐：波蓋利亞市場", en: "Mercat de la Boqueria / Sant Josep", address: "La Rambla 91", lat: 41.3817, lng: 2.1714, note: "表格註記 08:00-20:30；市場人多，包包放前面。" },
-          { time: "13:30", zh: "蘭布拉大道與奎爾宮", en: "La Rambla / Palau Guell", address: "Carrer Nou de la Rambla 3-5", lat: 41.3789, lng: 2.1740, note: "短走即可，不在蘭布拉大道吃觀光餐。" },
-          { time: "14:30", zh: "皇家廣場與哥倫布塔", en: "Placa Reial / Columbus Monument", address: "Placa Reial", lat: 41.3801, lng: 2.1753, note: "拍照後往海邊或回購物區。" },
-          { time: "16:00", zh: "海灘區／舊港", en: "Port Vell / beach area", address: "Port Vell", lat: 41.3763, lng: 2.1846, note: "只做輕散步；不要把購物袋放沙灘或椅背。" },
-          { time: "18:45", zh: "焦糖山日落（可選）", en: "Bunkers del Carmel sunset", address: "Carrer de Maria Labernia", lat: 41.4190, lng: 2.1614, note: "如果購物日已累就取消；去的話日落後叫車回。" },
-          { time: "20:30", zh: "晚餐與返回機場飯店", en: "Dinner and back to airport hotel", address: "Barcelona city", lat: 41.3870, lng: 2.1701, note: "選加泰隆尼亞廣場或恩典大道附近，餐後直接回 BAH。" }
+          {
+            time: "09:30",
+            zh: "機場飯店出發進市區",
+            en: "BAH to Barcelona city",
+            address: "Barcelona Airport Hotel",
+            lat: 41.3196,
+            lng: 2.0745,
+            note: "行李可留飯店；帶輕便包進城購物。"
+          },
+          {
+            time: "10:30",
+            zh: "恩典大道／加泰隆尼亞廣場購物",
+            en: "Passeig de Gracia / Plaça Catalunya shopping",
+            address: "Passeig de Gracia",
+            lat: 41.39,
+            lng: 2.165,
+            note: "主要購物段，品牌、百貨與退稅品集中。"
+          },
+          {
+            time: "12:30",
+            zh: "午餐：波蓋利亞市場",
+            en: "Mercat de la Boqueria / Sant Josep",
+            address: "La Rambla 91",
+            lat: 41.3817,
+            lng: 2.1714,
+            note: "新版註記 08:00-20:30；市場人多，包包放前面。"
+          },
+          {
+            time: "13:30",
+            zh: "蘭布拉大道與奎爾宮",
+            en: "La Rambla / Palau Güell",
+            address: "Carrer Nou de la Rambla 3-5",
+            lat: 41.3789,
+            lng: 2.174,
+            note: "短走即可，不在蘭布拉大道吃觀光餐。"
+          },
+          {
+            time: "14:30",
+            zh: "皇家廣場與哥倫布塔",
+            en: "Plaça Reial / Columbus Monument",
+            address: "Plaça Reial",
+            lat: 41.3801,
+            lng: 2.1753,
+            note: "拍照後往海邊或回購物區。"
+          },
+          {
+            time: "16:00",
+            zh: "Barceloneta 與舊港",
+            en: "Barceloneta / Port Vell",
+            address: "Barceloneta / Port Vell",
+            lat: 41.3763,
+            lng: 2.1846,
+            note: "新版刪除焦糖山；海邊只做輕散步，不把購物袋放沙灘或椅背。"
+          },
+          {
+            time: "18:30",
+            zh: "晚餐與返回機場飯店",
+            en: "Dinner and back to airport hotel",
+            address: "Barcelona city",
+            lat: 41.387,
+            lng: 2.1701,
+            note: "選加泰隆尼亞廣場或恩典大道附近，餐後直接回 BAH。"
+          }
         ],
         alternatives: [
-          { zh: "雨天購物備案：El Corte Inglés", en: "El Corte Ingles Placa Catalunya", lat: 41.3870, lng: 2.1701, note: "室內購物、退稅與餐飲方便。" },
-          { zh: "市場備案：Santa Caterina", en: "Mercat de Santa Caterina", lat: 41.3866, lng: 2.1782, note: "波蓋利亞太擠時改這裡。" }
+          {
+            zh: "雨天購物備案：El Corte Inglés",
+            en: "El Corte Ingles Placa Catalunya",
+            lat: 41.387,
+            lng: 2.1701,
+            note: "室內購物、退稅與餐飲方便。"
+          },
+          {
+            zh: "市場備案：Santa Caterina",
+            en: "Mercat de Santa Caterina",
+            lat: 41.3866,
+            lng: 2.1782,
+            note: "波蓋利亞太擠時改這裡。"
+          }
         ],
         extras: [
-          { zh: "El Corte Inglés Club del Gourmet", en: "El Corte Ingles Club del Gourmet", address: "Plaça de Catalunya, 14", lat: 41.3870, lng: 2.1701, note: "伴手禮文提到可買 Cudié 禮盒；購物主線上最順。" },
-          { zh: "Granja M. Viader", en: "Granja M. Viader", address: "C/ d’en Xuclà, 4", lat: 41.3830, lng: 2.1705, note: "When in BCN 早餐名單；波蓋利亞附近百年咖啡廳，可休息吃吉拿棒熱巧克力。" },
-          { zh: "La Campana", en: "La Campana", address: "Carrer dels Banys Nous, 11", lat: 41.3834, lng: 2.1754, note: "伴手禮文推薦杏仁糖；哥德區支線順路。" },
-          { zh: "Brunells／Casa Gispert", en: "Brunells / Casa Gispert", address: "Carrer de la Princesa / Sombrerers", lat: 41.3847, lng: 2.1815, note: "買地磚巧克力、糕點或堅果；若 6/9 走到波恩區才加。" },
-          { zh: "Caganer.com Portaferrissa", en: "Caganer.com", address: "Carrer de la Portaferrissa, 2", lat: 41.3837, lng: 2.1720, note: "伴手禮文推薦加泰隆尼亞限定小物；在蘭布拉/哥德區旁。" }
+          {
+            zh: "El Corte Inglés Club del Gourmet",
+            en: "El Corte Ingles Club del Gourmet",
+            address: "Plaça de Catalunya, 14",
+            lat: 41.387,
+            lng: 2.1701,
+            note: "伴手禮文提到可買 Cudié 禮盒；購物主線上最順。"
+          },
+          {
+            zh: "Granja M. Viader",
+            en: "Granja M. Viader",
+            address: "C/ d’en Xuclà, 4",
+            lat: 41.383,
+            lng: 2.1705,
+            note: "When in BCN 早餐名單；波蓋利亞附近百年咖啡廳，可休息吃吉拿棒熱巧克力。"
+          },
+          {
+            zh: "La Campana",
+            en: "La Campana",
+            address: "Carrer dels Banys Nous, 11",
+            lat: 41.3834,
+            lng: 2.1754,
+            note: "伴手禮文推薦杏仁糖；哥德區支線順路。"
+          },
+          {
+            zh: "Brunells／Casa Gispert",
+            en: "Brunells / Casa Gispert",
+            address: "Carrer de la Princesa / Sombrerers",
+            lat: 41.3847,
+            lng: 2.1815,
+            note: "買地磚巧克力、糕點或堅果；若 6/9 走到波恩區才加。"
+          },
+          {
+            zh: "Caganer.com Portaferrissa",
+            en: "Caganer.com",
+            address: "Carrer de la Portaferrissa, 2",
+            lat: 41.3837,
+            lng: 2.172,
+            note: "伴手禮文推薦加泰隆尼亞限定小物；在蘭布拉/哥德區旁。"
+          }
         ]
       }
     ];
@@ -1303,40 +2583,39 @@
       ],
       "bcn-0528": [
         "Moxy 到聖家堂：Metro L5 Sants Estació → Sagrada Família，出站即到；早上比公車穩。",
-        "聖家堂到午餐：若留聖家堂周邊步行即可；若往波恩區，Metro L2 Sagrada Família → Passeig de Gràcia，換 L4 → Jaume I。",
-        "午餐後回 Moxy：從 Jaume I 搭 L4 → Passeig de Gràcia，換 L3 → Tarragona；或直接計程車約 15-20 分。",
-        "Moxy 到畢卡索美術館：Metro L3 Tarragona → Passeig de Gràcia，換 L4 → Jaume I，步行約 6 分。",
-        "畢卡索到波恩/海上聖母聖殿：步行約 5-10 分，區域白天好逛但注意包包。",
-        "波恩到焦糖山：建議計程車/Bolt 上山。大眾運輸可 Metro L4 Jaume I → Alfons X，再換 Bus 119 或步行上坡；日落後叫車下山。",
-        "焦糖山到 MNAC：此段距離長且轉乘多，若要去建議直接計程車；或取消 MNAC 保體力。"
+        "聖家堂到紀念碑鬥牛場：步行約 15 分或短程 taxi；只看外觀，不需要特地繞很久。",
+        "紀念碑鬥牛場/聖家堂回 Moxy：可搭 Metro L5 Sagrada Família → Sants Estació，再步行回飯店。",
+        "Moxy 到 Quimet & Quimet：可搭 Metro L3 Tarragona → Paral·lel，再步行；或短程 taxi，站食名店排隊就果斷換店。",
+        "Quimet & Quimet 到波恩區/畢卡索：建議 Metro L3 Paral·lel → Passeig de Gràcia，換 L4 → Jaume I，再步行。",
+        "畢卡索到晚餐：可步行到 Jaume I 搭 L4 → Passeig de Gràcia，或短程車到 Pau Claris。",
+        "晚餐到 MNAC：從 Passeig de Gràcia/Catalunya 搭 L3 → Espanya，再步行到噴泉區；水舞結束後搭 L3 Espanya → Tarragona 或直接 taxi 回 Moxy。"
       ],
       "bcn-0529": [
         "Moxy 到恩典大道：Metro L3 Tarragona → Passeig de Gràcia；也可步行約 25-30 分作早晨散步。",
-        "恩典大道到 Arenas：Metro L3 Passeig de Gràcia → Espanya，或計程車約 10 分。",
-        "Arenas 到午餐候選：La Flauta/Vinitus 可從 Espanya 搭 L3 → Passeig de Gràcia；La Pubilla 建議 L3 Espanya → Fontana 後步行。",
-        "午餐到米拉之家：若在 Vinitus/La Flauta，步行約 10-15 分；若在 La Pubilla，Metro L3 Fontana → Diagonal。",
-        "米拉之家到咖啡/飯店短休：回 Moxy 搭 L3 Diagonal → Tarragona；只休咖啡則留在 Rambla de Catalunya 周邊步行。",
-        "飯店或咖啡到巴特婁之家：Metro L3 Tarragona/Diagonal → Passeig de Gràcia；米拉之家出發則步行約 8 分。",
-        "巴特婁之家到晚餐候選：Vinitus/La Flauta/Paella de Su Pau Claris 皆步行 5-12 分；飯後 L3 Passeig de Gràcia → Tarragona 回 Moxy。"
+        "恩典大道到紀念碑鬥牛場：可搭 Metro L2 Passeig de Gràcia → Monumental，或短程 taxi；若 5/28 已看過就跳過。",
+        "午餐候選移動：La Flauta/Vinitus/La Paella de Su Pau Claris 都在擴展區，步行或短程地鐵即可；La Pubilla/Moscada 較偏格拉西亞，體力不足不追。",
+        "午餐到米拉之家：若在 Vinitus/La Flauta，步行約 10-15 分；若在格拉西亞，搭 L3 Fontana/Diagonal。",
+        "米拉之家到下午茶/巴特婁之家：留在 Rambla de Catalunya / Passeig de Gràcia 一帶步行最順。",
+        "巴特婁之家到 La Flauta：步行約 10-12 分；晚餐後準備叫車去焦糖山。",
+        "La Flauta 到焦糖山：首選 taxi/Bolt，約 7.5 km、抓 EUR 16；日落後直接叫車回 Moxy。"
       ],
       "mad-0530": [
         "跨城市交通不列票券。抵達 Madrid Puerta de Atocha 後先看行李狀態，車站內人多請不要邊走邊看手機。",
         "Atocha 到 AC Hotel Atocha：步行約 8-12 分，行李多可短程計程車。",
-        "飯店到聖米格爾市場：Metro L1 Atocha → Sol，轉步行約 8 分；或計程車約 12-18 分。",
-        "聖米格爾市場到 Casa Labra/Botín：步行串接，Casa Labra 在 Sol 旁，Botín 靠 Plaza Mayor。",
-        "Casa Labra/Botín 到太陽門與主廣場：步行 5-10 分，這段以步行最方便。",
+        "飯店到 Botín/主廣場：Metro L1 Atocha → Sol，轉步行約 8-10 分；行李疲勞時可計程車約 12-18 分。",
+        "Botín 到聖米格爾市場：步行約 3-5 分；若 Botín 無位，市場可快速補食。",
+        "聖米格爾市場到 Casa Labra/Casa Revuelta/La Campana：步行串接，依排隊狀況三選一。",
         "主廣場到馬德里王宮：步行約 12-15 分，沿 Calle Mayor 走主街。",
         "王宮到晚餐：若吃 Botín 步行回 Plaza Mayor 約 12 分；若回飯店，Metro L1 Sol → Atocha。",
-        "晚餐到普拉多可選：Metro L1 Sol → Estación del Arte，或從文學區步行；晚間回飯店建議計程車或 L1。"
+        "晚餐到阿穆德納主教堂夜景：若仍在王宮/主廣場一帶可步行主街；若已回 Atocha，這段直接取消或短程車。"
       ],
       "mad-0531": [
         "AC Hotel Atocha 到 El Rastro：Metro L1 Atocha → Tirso de Molina，再步行約 8 分；也可計程車到 Ribera de Curtidores。",
         "El Rastro 到主廣場/太陽門：步行約 15 分，走 La Latina 到 Plaza Mayor 主線。",
         "主廣場到 Casa Revuelta/La Campana：步行 3-8 分。",
         "午餐到觀光巴士上車點：建議步行到 Plaza de España / Gran Vía 或 Museo del Prado 站點，依當日巴士路線選最近站。",
-        "觀光巴士到普拉多：在 Museo del Prado / Neptuno 周邊下車，步行 5 分。",
-        "普拉多到晚餐：文學區可步行 8-12 分；若回阿托查附近，步行或 Metro L1 Estación del Arte → Atocha。",
-        "晚餐到阿穆德納夜景：若仍在老城可步行主街；若在阿托查附近，Metro L1 Atocha → Sol，再步行/短程計程車。夜晚不要走空巷。"
+        "觀光巴士/購物結束到晚餐：文學區、Gran Vía 或 Atocha 周邊都可；若買很多東西，先回飯店放下再出門。",
+        "晚餐後回 AC Hotel Atocha：步行或 Metro L1 回 Atocha；晚上不要再加王宮區夜景。"
       ],
       "mad-0601": [
         "AC Hotel Atocha 到 Toledo 火車：步行到 Madrid Puerta de Atocha；跨城市火車票另行使用。",
@@ -1345,7 +2624,7 @@
         "主教座堂到午餐：老城內步行約 5-10 分，坡道與石板路多。",
         "午餐到聖多美教堂/猶太區：步行約 8-12 分，穿好走鞋。",
         "老城返回馬德里：從 Zocodover 搭 Bus 5/61 到 Toledo 車站，或計程車下山；再搭火車回 Atocha。",
-        "Atocha 到普拉多免費時段：步行約 12-15 分或 Metro L1 Atocha → Estación del Arte。"
+        "回到 Atocha 後就近晚餐：可步行到文學區或飯店附近，托雷多日不再加普拉多。"
       ],
       "opo-0602": [
         "市區到馬德里機場：若從 Atocha 出發，最省心計程車固定費；地鐵可 L1 Atocha → Tribunal，換 L10 → Nuevos Ministerios，換 L8 → Aeropuerto T1-T2-T3/T4。",
@@ -1423,7 +2702,6 @@
         "波蓋利亞到蘭布拉大道/奎爾宮：步行約 5-8 分。",
         "奎爾宮到皇家廣場/哥倫布塔：步行 5-12 分，走明亮主街。",
         "哥倫布塔到舊港/海邊：步行約 10-15 分；購物袋多就不要去沙灘。",
-        "舊港到焦糖山：若真的要去，建議 Metro L4 Barceloneta → Alfons X，再換 Bus 119/短程車上山；日落後叫車下山。",
         "晚餐後回機場飯店：從 Catalunya/Diagonal 可搭 L3/L5 接 L9 Sud 到 Aeroport T1/T2，再接飯店接駁；晚餐較晚或購物多時直接計程車。"
       ]
     };
@@ -1446,7 +2724,7 @@
         { zh: "桂爾宮", en: "Palau Güell", address: "Carrer Nou de la Rambla 3-5", lat: 41.3789, lng: 2.1740, note: "補充推薦：你原本會經過奎爾宮一帶；若想補一個高第早期室內代表作，可用它取代蘭布拉大道久逛。" }
       ],
       "mad-0531": [
-        { zh: "索菲亞王后藝術中心", en: "Museo Reina Sofía", address: "Calle de Santa Isabel 52", lat: 40.4081, lng: -3.6940, note: "補充推薦：若普拉多免費時段太擠或你想看《格爾尼卡》，可把它升級為正式備案；離阿托查很近。" },
+        { zh: "索菲亞王后藝術中心", en: "Museo Reina Sofía", address: "Calle de Santa Isabel 52", lat: 40.4081, lng: -3.6940, note: "補充推薦：若你想看《格爾尼卡》或需要雨天室內備案，可把它升級為正式備案；離阿托查很近。" },
         { zh: "麗池公園與水晶宮", en: "El Retiro / Palacio de Cristal", address: "Parque de El Retiro", lat: 40.4136, lng: -3.6821, note: "補充推薦：如果不想再進美術館，下午改到麗池公園調節體力；水晶宮需以當日開放狀態為準。" },
         { zh: "德波神殿", en: "Templo de Debod", address: "Calle de Ferraz 1", lat: 40.4240, lng: -3.7178, note: "補充推薦：王宮區附近的夕陽點；若晚餐前還有精神，可從王宮/西班牙廣場方向順路看，不建議深夜停留。" }
       ],
@@ -1550,7 +2828,7 @@
         { zh: "聖米格爾市場", en: "Mercado de San Miguel", type: "市場/餐飲空間", access: "市場開放時間內", reliability: "中高", lat: 40.4154, lng: -3.7089, note: "午餐區最實用，但尖峰人多可能排隊。" },
         { zh: "主廣場周邊餐廳", en: "Plaza Mayor restaurants", type: "餐飲區", access: "通常需消費", reliability: "中", lat: 40.4155, lng: -3.7074, note: "老城步行段不一定有好公廁，用餐/咖啡時順手。" },
         { zh: "馬德里王宮館內", en: "Royal Palace of Madrid", type: "購票景點", access: "入場後使用", reliability: "高", lat: 40.4179, lng: -3.7143, note: "若進王宮，這是王宮區最可靠的點；離開前先去。" },
-        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "購票/免費時段景點", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "若晚上加普拉多免費時段，進館後最可靠。" }
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "購票景點", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "新版正式行程已不排普拉多；若臨時改進館，館內洗手間最可靠。" }
       ],
       "mad-0531": [
         { zh: "AC Hotel Atocha", en: "AC Hotel Atocha", type: "飯店", access: "住客最可靠", reliability: "高", lat: 40.4058, lng: -3.6900, note: "出門前先用，週日市集人多。" },
@@ -1567,7 +2845,7 @@
         { zh: "Toledo 車站", en: "Toledo railway station", type: "車站", access: "站內設施", reliability: "中高", lat: 39.8628, lng: -4.0116, note: "抵達托雷多先用；上山與老城石板路後臨時找不方便。" },
         { zh: "托雷多遊客區/索科多佛廣場", en: "Zocodover visitor area", type: "遊客區/咖啡館", access: "公共設施或需消費", reliability: "中", lat: 39.8587, lng: -4.0228, note: "老城核心備案；若找不到明確公廁，就用咖啡館。" },
         { zh: "托雷多主教座堂館內", en: "Toledo Cathedral", type: "購票景點", access: "入館後使用", reliability: "中高", lat: 39.8570, lng: -4.0236, note: "參觀前後先確認；主教座堂周邊人潮多。" },
-        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "博物館", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "回馬德里若加普拉多免費時段，離開前先去。" }
+        { zh: "普拉多美術館館內", en: "Museo del Prado", type: "博物館", access: "入館後使用", reliability: "高", lat: 40.4138, lng: -3.6921, note: "托雷多日新版已不排普拉多；若臨時改進館，離開前先去。" }
       ],
       "opo-0602": [
         { zh: "馬德里機場", en: "Madrid Barajas Airport", type: "機場", access: "航廈內設施", reliability: "高", lat: 40.4918, lng: -3.5695, note: "飛波多前最可靠；過安檢前後都先處理。" },
