@@ -299,34 +299,29 @@
       backdrop-filter: blur(8px);
     }
 
-    .map-action-bar {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 520;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      max-width: min(360px, calc(100% - 28px));
-      border: 1px solid rgba(24, 74, 89, 0.18);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.94);
-      padding: 8px;
-      box-shadow: 0 10px 24px rgba(24, 74, 89, 0.14);
-      backdrop-filter: blur(8px);
+    .locate-btn {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.96);
+      border-radius: 50%;
+      background: #c9403a;
+      color: #fff;
+      padding: 0;
+      font: inherit;
+      font-size: 0;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     }
 
-    .locate-btn {
-      border: 1px solid #cbd9df;
-      border-radius: 8px;
-      background: #f6fbfd;
-      color: var(--accent);
-      padding: 8px 10px;
-      font: inherit;
-      font-size: 12px;
-      font-weight: 850;
-      cursor: pointer;
-      white-space: nowrap;
+    .locate-btn::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28);
     }
 
     .locate-btn:disabled {
@@ -334,19 +329,13 @@
       opacity: 0.68;
     }
 
-    .locate-status {
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.25;
-    }
-
     .user-marker {
       width: 24px;
       height: 24px;
       border: 3px solid #fff;
       border-radius: 50%;
-      background: #1f8a70;
-      box-shadow: 0 0 0 4px rgba(31, 138, 112, 0.22), 0 4px 12px rgba(0, 0, 0, 0.28);
+      background: #c9403a;
+      box-shadow: 0 0 0 4px rgba(201, 64, 58, 0.2), 0 4px 12px rgba(0, 0, 0, 0.28);
     }
 
     .leaflet-popup-content {
@@ -552,12 +541,6 @@
         min-height: 420px;
       }
       #map { min-height: 420px; }
-      .map-action-bar {
-        top: 10px;
-        right: 10px;
-        left: 10px;
-        justify-content: space-between;
-      }
       .map-note { display: none; }
       .panel-inner { padding: 14px; }
       .day-tabs { padding: 10px; }
@@ -580,10 +563,6 @@
       </aside>
       <section class="map-wrap" aria-label="西班牙葡萄牙行程地圖">
         <div id="map"></div>
-        <div class="map-action-bar" aria-live="polite">
-          <button class="locate-btn" type="button" id="locate-btn">我的位置</button>
-          <span class="locate-status" id="locate-status">尚未定位</span>
-        </div>
         <div class="map-note">提示：地圖使用 OpenStreetMap 圖資。晚餐後請優先搭地鐵、計程車或走明亮主街；在車站、熱門景點入口、電車與海邊請把手機和錢包收進內側拉鍊袋。</div>
       </section>
     </main>
@@ -2987,14 +2966,29 @@
 
     const tabs = document.querySelector(".day-tabs");
     const details = document.querySelector("#details");
-    const locateButton = document.querySelector("#locate-btn");
-    const locateStatus = document.querySelector("#locate-status");
     const map = L.map("map", { zoomControl: true, scrollWheelZoom: true }).setView([41.392, 2.17], 13);
+    const locateControl = L.control({ position: "topleft" });
+    let locateButton = null;
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+
+    locateControl.onAdd = function () {
+      const container = L.DomUtil.create("div", "leaflet-bar");
+      locateButton = L.DomUtil.create("button", "locate-btn", container);
+      locateButton.type = "button";
+      locateButton.title = "顯示我的位置";
+      locateButton.setAttribute("aria-label", "顯示我的位置");
+      L.DomEvent.disableClickPropagation(container);
+      L.DomEvent.on(locateButton, "click", (event) => {
+        L.DomEvent.stop(event);
+        locateUser();
+      });
+      return container;
+    };
+    locateControl.addTo(map);
 
     let routeLayer = L.layerGroup().addTo(map);
     let wcLayer = L.layerGroup().addTo(map);
@@ -3204,7 +3198,7 @@
     }
 
     function setLocateStatus(message) {
-      if (locateStatus) locateStatus.textContent = message;
+      if (locateButton) locateButton.title = message;
     }
 
     function renderUserLocation(position) {
