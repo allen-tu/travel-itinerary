@@ -299,6 +299,56 @@
       backdrop-filter: blur(8px);
     }
 
+    .map-action-bar {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 520;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: min(360px, calc(100% - 28px));
+      border: 1px solid rgba(24, 74, 89, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 8px;
+      box-shadow: 0 10px 24px rgba(24, 74, 89, 0.14);
+      backdrop-filter: blur(8px);
+    }
+
+    .locate-btn {
+      border: 1px solid #cbd9df;
+      border-radius: 8px;
+      background: #f6fbfd;
+      color: var(--accent);
+      padding: 8px 10px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 850;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .locate-btn:disabled {
+      cursor: progress;
+      opacity: 0.68;
+    }
+
+    .locate-status {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .user-marker {
+      width: 24px;
+      height: 24px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: #1f8a70;
+      box-shadow: 0 0 0 4px rgba(31, 138, 112, 0.22), 0 4px 12px rgba(0, 0, 0, 0.28);
+    }
+
     .leaflet-popup-content {
       margin: 12px 14px;
       min-width: 210px;
@@ -502,6 +552,12 @@
         min-height: 420px;
       }
       #map { min-height: 420px; }
+      .map-action-bar {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: space-between;
+      }
       .map-note { display: none; }
       .panel-inner { padding: 14px; }
       .day-tabs { padding: 10px; }
@@ -524,6 +580,10 @@
       </aside>
       <section class="map-wrap" aria-label="西班牙葡萄牙行程地圖">
         <div id="map"></div>
+        <div class="map-action-bar" aria-live="polite">
+          <button class="locate-btn" type="button" id="locate-btn">我的位置</button>
+          <span class="locate-status" id="locate-status">尚未定位</span>
+        </div>
         <div class="map-note">提示：地圖使用 OpenStreetMap 圖資。晚餐後請優先搭地鐵、計程車或走明亮主街；在車站、熱門景點入口、電車與海邊請把手機和錢包收進內側拉鍊袋。</div>
       </section>
     </main>
@@ -2927,6 +2987,8 @@
 
     const tabs = document.querySelector(".day-tabs");
     const details = document.querySelector("#details");
+    const locateButton = document.querySelector("#locate-btn");
+    const locateStatus = document.querySelector("#locate-status");
     const map = L.map("map", { zoomControl: true, scrollWheelZoom: true }).setView([41.392, 2.17], 13);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -2936,9 +2998,11 @@
 
     let routeLayer = L.layerGroup().addTo(map);
     let wcLayer = L.layerGroup().addTo(map);
+    let userLocationLayer = L.layerGroup().addTo(map);
     let activeDayIndex = 0;
     let activeRouteMarkers = [];
     let wcVisible = false;
+    let latestUserLocation = null;
 
     function refreshMapSize(delay = 80) {
       window.setTimeout(() => {
@@ -3139,6 +3203,67 @@
       renderWcLayer(days[activeDayIndex]);
     }
 
+    function setLocateStatus(message) {
+      if (locateStatus) locateStatus.textContent = message;
+    }
+
+    function renderUserLocation(position) {
+      const { latitude, longitude, accuracy } = position.coords;
+      latestUserLocation = [latitude, longitude];
+      userLocationLayer.clearLayers();
+      L.circle(latestUserLocation, {
+        radius: Math.min(Math.max(accuracy || 40, 25), 250),
+        color: "#1f8a70",
+        weight: 1,
+        opacity: 0.7,
+        fillColor: "#1f8a70",
+        fillOpacity: 0.12
+      }).addTo(userLocationLayer);
+      L.marker(latestUserLocation, {
+        icon: L.divIcon({
+          className: "",
+          html: '<div class="user-marker"></div>',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12],
+          popupAnchor: [0, -12]
+        }),
+        zIndexOffset: 1500
+      })
+        .bindPopup(`
+          <p class="popup-title">我的位置</p>
+          <p class="popup-line">定位精度約 ${Math.round(accuracy || 0)} 公尺</p>
+        `)
+        .addTo(userLocationLayer)
+        .openPopup();
+      map.flyTo(latestUserLocation, Math.max(map.getZoom(), 15), { duration: 0.65 });
+      setLocateStatus(`已定位，精度約 ${Math.round(accuracy || 0)}m`);
+    }
+
+    function locateUser() {
+      if (!navigator.geolocation) {
+        setLocateStatus("此瀏覽器不支援定位");
+        return;
+      }
+      locateButton.disabled = true;
+      setLocateStatus("定位中…");
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          locateButton.disabled = false;
+          renderUserLocation(position);
+        },
+        (error) => {
+          locateButton.disabled = false;
+          const messages = {
+            1: "定位被拒絕，請允許位置權限",
+            2: "目前無法取得位置",
+            3: "定位逾時，請再試一次"
+          };
+          setLocateStatus(messages[error.code] || "定位失敗，請再試一次");
+        },
+        { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
+      );
+    }
+
     function focusStop(stopIndex) {
       const day = days[activeDayIndex];
       const stop = day?.route?.[stopIndex];
@@ -3226,6 +3351,7 @@
     window.addEventListener("resize", () => refreshMapSize(120));
     window.addEventListener("orientationchange", () => refreshMapSize(260));
     window.addEventListener("load", () => refreshMapSize(160));
+    if (locateButton) locateButton.addEventListener("click", locateUser);
 
     renderDay(0);
   </script>
